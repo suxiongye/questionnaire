@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/infoGridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="2"
@@ -151,7 +151,7 @@
             android:text="@string/busTypeInput" />
 
         <RadioGroup
-            android:id="@+id/busTypes"
+            android:id="@+id/busTypesRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
@@ -192,7 +192,7 @@
             android:text="@string/sexInput" />
 
         <RadioGroup
-            android:id="@+id/sexRadio"
+            android:id="@+id/sexRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"

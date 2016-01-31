@@ -22,9 +22,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
+        <activity
             android:name=".InformationActivity"
-            android:label="@string/informationTitle">
+            android:label="@string/informationTitle" >
+        </activity>
+        <activity
+            android:name=".MajorQuestionActivity"
+            android:label="@string/majorQuestionTitle" >
+        </activity>
+        <activity
+            android:name=".SubQuestionActivity"
+            android:label="@string/subQuestionTitle" >
+        </activity>
+        <activity
+            android:name=".PersonInformationActivity"
+            android:label="@string/personInfoTitle" >
         </activity>
     </application>
 
