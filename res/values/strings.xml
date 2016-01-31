@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">公共交通乘客满意度调查</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="title">公共交通乘客满意度调查</string>
+    <string name="start">开始调查</string>
+    <string name="exit">退出</string>
+    
+    <string name="informationTitle">基本信息</string>
+    <string name="nameInput">调查人姓名：</string>
+    <string name="nameInputHint">请输入调查人姓名</string>
+    <string name="dateInput">调查日期：</string>
+    <string name="dateInputHint">请输入八位数字的调查日期</string>
+    <string name="timeInput">调查时间：</string>
+    <string name="timeInputHint">请输入六位数字调查时间</string>
+    <string name="zoneInput">调查区域：</string>
+    <string name="zoneInputHint">请输入调查区域</string>
+    <string name="lineInput">线路号：</string>
+    <string name="lineInputHint">请输入调查线路号</string>
+    <string name="stationNameInput">上车站台：</string>
+    <string name="stationNameInputHint">请输入上车站台</string>
+    <string name="stationTypeInput">上车站台类型：</string>
+    <string name="stationTypeInputHint">请输入上车站台类型</string>
+    <string name="busTypeInput">车辆类型：</string>
+    <string name="busType1">双层巴士</string>
+    <string name="busType2">绞接巴士</string>
+    <string name="busType3">低地台巴士</string>
+    <string name="busType4">其他</string>
+    <string name="sexInput">乘客性别：</string>
+    <string name="sexMan">男</string>
+    <string name="sexWoman">女</string>
+    <string name="infoBtn">进入调查</string>
+    
+</resources>
