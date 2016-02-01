@@ -75,5 +75,6 @@
     <string name="chooseScore8">8</string>
     <string name="chooseScore9">9</string>
     <string name="chooseScore10">10</string>
-
+    <string name="submitText">提交</string>
+    
 </resources>

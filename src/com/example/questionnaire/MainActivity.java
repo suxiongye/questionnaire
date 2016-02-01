@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		// 退出按钮
+		Button exitBtn = (Button) findViewById(R.id.exitButton);
 
 		// 存储数据库地址和名称
 		String DB_PATH = "/data/data/com.example.questionnaire/databases/";
@@ -48,7 +52,44 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+/*
+		// 存储问卷
+		// 判断是否插入SD卡
+		if (Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED) == false) {
+			exitBtn.setText("请插入SDCARD");
+		}
 
+		String SDPATH = Environment.getExternalStorageDirectory().getPath();
+		String QUESTION_PATH = SDPATH + "//questions//";
+		String QUESTION_NAME = Long.toString(System.currentTimeMillis())
+				+ ".txt";
+		if ((new File(QUESTION_PATH + QUESTION_NAME).exists()) == false) {
+			// 若不存在则生成目录
+			File dir = new File(QUESTION_PATH);
+			if (!dir.exists()) {
+				dir.mkdir();
+			}
+		}
+		// 写入文件
+		try {
+			InputStream is = getBaseContext().getAssets().open(
+					"testStorage.txt");
+			OutputStream os = new FileOutputStream(QUESTION_PATH
+					+ QUESTION_NAME);
+			byte[] buffer = new byte[1024];
+			int length;
+
+			while ((length = is.read(buffer)) > 0) {
+				os.write(buffer, 0, length);
+			}
+			os.flush();
+			os.close();
+			is.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+*/
 		// 开始按钮
 		Button startBtn = (Button) findViewById(R.id.startButton);
 		startBtn.setOnClickListener(new OnClickListener() {
@@ -62,8 +103,6 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		// 退出按钮
-		Button exitBtn = (Button) findViewById(R.id.exitButton);
 		exitBtn.setOnClickListener(new OnClickListener() {
 
 			@Override

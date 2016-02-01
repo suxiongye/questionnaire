@@ -4,7 +4,11 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="/home/su/Android/adt-bundle-linux-x86_64-20131030/sdk/platforms/android-19/android.jar"/>
+	<classpathentry kind="lib" path="/home/su/Android/adt-bundle-linux-x86_64-20131030/sdk/platforms/android-19/android.jar" sourcepath="/home/su/Android/adt-bundle-linux-x86_64-20131030/android-19.zip">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

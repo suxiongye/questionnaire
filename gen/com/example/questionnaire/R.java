@@ -25,7 +25,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08005d;
+        public static final int action_settings=0x7f08005e;
         public static final int ageRadio1=0x7f080037;
         public static final int ageRadio2=0x7f080038;
         public static final int ageRadio3=0x7f080039;
@@ -98,22 +98,23 @@ public final class R {
         public static final int stationNameTextView=0x7f08000c;
         public static final int stationTypeEditText=0x7f08000f;
         public static final int stationTypeTextView=0x7f08000e;
-        public static final int subBtnNext=0x7f08005c;
-        public static final int subBtnPre=0x7f08005b;
-        public static final int subChooseRadio1=0x7f080051;
-        public static final int subChooseRadio10=0x7f08005a;
-        public static final int subChooseRadio2=0x7f080052;
-        public static final int subChooseRadio3=0x7f080053;
-        public static final int subChooseRadio4=0x7f080054;
-        public static final int subChooseRadio5=0x7f080055;
-        public static final int subChooseRadio6=0x7f080056;
-        public static final int subChooseRadio7=0x7f080057;
-        public static final int subChooseRadio8=0x7f080058;
-        public static final int subChooseRadio9=0x7f080059;
-        public static final int subChooseRadioGroup=0x7f080050;
-        public static final int subQuestionContentTextView=0x7f08004f;
-        public static final int subQuestionLabel=0x7f08004d;
-        public static final int subQustionScrollView=0x7f08004e;
+        public static final int subBtnNext=0x7f08005d;
+        public static final int subBtnPre=0x7f08005c;
+        public static final int subChooseRadio1=0x7f080052;
+        public static final int subChooseRadio10=0x7f08005b;
+        public static final int subChooseRadio2=0x7f080053;
+        public static final int subChooseRadio3=0x7f080054;
+        public static final int subChooseRadio4=0x7f080055;
+        public static final int subChooseRadio5=0x7f080056;
+        public static final int subChooseRadio6=0x7f080057;
+        public static final int subChooseRadio7=0x7f080058;
+        public static final int subChooseRadio8=0x7f080059;
+        public static final int subChooseRadio9=0x7f08005a;
+        public static final int subChooseRadioGroup=0x7f080051;
+        public static final int subQuestionContentTextView=0x7f080050;
+        public static final int subQuestionLabel=0x7f08004e;
+        public static final int subQustionScrollView=0x7f08004f;
+        public static final int submitBtn=0x7f08004d;
         public static final int timeEditText=0x7f080007;
         public static final int timeTextView=0x7f080006;
         public static final int titleTextView=0x7f08001b;
@@ -200,6 +201,7 @@ public final class R {
         public static final int stationTypeInput=0x7f050013;
         public static final int stationTypeInputHint=0x7f050014;
         public static final int subQuestionTitle=0x7f05003b;
+        public static final int submitText=0x7f05004a;
         public static final int timeInput=0x7f05000b;
         public static final int timeInputHint=0x7f05000c;
         public static final int title=0x7f050003;
