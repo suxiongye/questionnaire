@@ -61,10 +61,10 @@ public class InformationActivity extends Activity {
 				// 如果个人信息完善则可以开始调查
 				if (checkIfComplete() == true) {
 					//存储个人信息
-			
+					questionFile.saveColumn();
 					questionFile.saveInformation(infoList);
 					Intent intent = new Intent(InformationActivity.this,
-							MajorQuestionActivity.class);
+							PersonInformationActivity.class);
 					Bundle bundle = new Bundle();
 					bundle.putSerializable("questionFile", questionFile);
 					intent.putExtras(bundle);

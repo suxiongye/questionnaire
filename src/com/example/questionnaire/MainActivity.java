@@ -9,8 +9,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,11 +20,37 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// 开始按钮
+		Button startBtn = (Button) findViewById(R.id.startButton);
+		// 判断是否插入SD卡
+		if (Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED) == false) {
+			startBtn.setText("请插入SD卡");
+		}
+		startBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,
+						InformationActivity.class);
+				startActivity(intent);
+			}
+		});
 		// 退出按钮
 		Button exitBtn = (Button) findViewById(R.id.exitButton);
 
-		// 存储数据库地址和名称
-		String DB_PATH = "/data/data/com.example.questionnaire/databases/";
+		exitBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				// 退出程序
+				MainActivity.this.finish();
+			}
+		});
+
+		// 存储题库数据库地址和名称
+		String DB_PATH = Environment.getDataDirectory()
+				+ "/data/com.example.questionnaire/databases/";
 		String DB_NAME = "questionnaire.db";
 
 		if ((new File(DB_PATH + DB_NAME).exists()) == false) {
@@ -53,26 +77,5 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 
-		// 开始按钮
-		Button startBtn = (Button) findViewById(R.id.startButton);
-		startBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this,
-						InformationActivity.class);
-				startActivity(intent);
-			}
-		});
-
-		exitBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				MainActivity.this.finish();
-			}
-		});
 	}
 }

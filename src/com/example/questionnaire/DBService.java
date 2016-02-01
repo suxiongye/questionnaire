@@ -5,15 +5,18 @@ import java.util.List;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
 public class DBService {
 	private SQLiteDatabase db;
-
+	private String DB_PATH = Environment.getDataDirectory()+"/data/com.example.questionnaire/databases/questionnaire.db";
+	
 	// 打开数据库
 	public DBService() {
+		
 		db = SQLiteDatabase
 				.openDatabase(
-						"/data/data/com.example.questionnaire/databases/questionnaire.db",
+						DB_PATH,
 						null, SQLiteDatabase.OPEN_READWRITE);
 	}
 
