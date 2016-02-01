@@ -39,6 +39,8 @@ public class MajorQuestionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_majorquestion);
 
+		//获取题目
+		
 		// 绑定控件
 		tv_label = (TextView) findViewById(R.id.majorQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.majorQuestionContentTextView);
