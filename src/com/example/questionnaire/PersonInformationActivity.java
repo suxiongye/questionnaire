@@ -73,6 +73,7 @@ public class PersonInformationActivity extends Activity {
 					Intent intent = new Intent(PersonInformationActivity.this,
 							MainActivity.class);
 					startActivity(intent);
+					PersonInformationActivity.this.finish();
 				}
 			}
 		});

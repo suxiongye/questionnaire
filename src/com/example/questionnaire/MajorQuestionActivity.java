@@ -14,6 +14,12 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+/**
+ * 该类显示所有第一部分题目
+ * 
+ * @author su
+ * 
+ */
 public class MajorQuestionActivity extends Activity {
 	// 控件声明
 	private static TextView tv_label;
@@ -30,7 +36,8 @@ public class MajorQuestionActivity extends Activity {
 
 	// 题目
 	private static List<MajorQuestion> list;
-
+	private static QuestionFile questionFile;
+	
 	// 低于6分的题目
 	private static List<String> worstList;
 
@@ -39,8 +46,9 @@ public class MajorQuestionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_majorquestion);
 
-		//获取题目
-		
+		// 获取题目对象
+		questionFile = (QuestionFile) getIntent().getSerializableExtra(
+				"questionFile");
 		// 绑定控件
 		tv_label = (TextView) findViewById(R.id.majorQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.majorQuestionContentTextView);
@@ -90,6 +98,8 @@ public class MajorQuestionActivity extends Activity {
 					}
 					// 若题目全部做完则进入细化环节
 					if (allCheck == true) {
+						//存入数据库
+						questionFile.saveMajorQuestion(list);
 						Intent intent = null;
 						// 放入低于6分的题目数组
 						worstList = getWorstList(list);
@@ -100,6 +110,7 @@ public class MajorQuestionActivity extends Activity {
 							Bundle bundle = new Bundle();
 							bundle.putStringArrayList("worstList",
 									(ArrayList<String>) worstList);
+							bundle.putSerializable("questionFile", questionFile);
 							intent.putExtras(bundle);
 							startActivity(intent);
 						}
@@ -107,8 +118,12 @@ public class MajorQuestionActivity extends Activity {
 						else {
 							intent = new Intent(MajorQuestionActivity.this,
 									PersonInformationActivity.class);
+							Bundle bundle = new Bundle();
+							bundle.putSerializable("questionFile", questionFile);
+							intent.putExtras(bundle);
 							startActivity(intent);
 						}
+						MajorQuestionActivity.this.finish();
 					}
 				}
 			}

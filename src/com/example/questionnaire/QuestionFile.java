@@ -7,6 +7,13 @@ import java.util.List;
 
 import android.os.Environment;
 
+/**
+ * 该类为存储题目文件类
+ * 
+ * @author su
+ * 
+ */
+
 public class QuestionFile implements Serializable {
 	/**
 	 * 支持序列化用于Intent传输
@@ -14,8 +21,9 @@ public class QuestionFile implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String INFORMATION_NAME;
-	private String SDPATH = Environment.getExternalStorageDirectory().getAbsolutePath();
-	private String INFORMATION_PATH = SDPATH + "/questions/informations/";
+	private String SDPATH = Environment.getExternalStorageDirectory()
+			.getAbsolutePath();
+	private String INFORMATION_PATH = SDPATH + "/questions/";
 
 	public QuestionFile() {
 		INFORMATION_NAME = Long.toString(System.currentTimeMillis()) + ".txt";
@@ -39,28 +47,28 @@ public class QuestionFile implements Serializable {
 		return "收入,年龄,是否有车,出行目的,常坐公交,";
 	}
 
-	//主要问题列项
-	public String getMajorQuestionColumn(){
+	// 主要问题列项
+	public String getMajorQuestionColumn() {
 		String majorQuestion = "";
 		DBService dbService = new DBService();
 		List<MajorQuestion> list = dbService.getMajorQuestions();
-		for(int i = 0; i < list.size(); i++){
-				majorQuestion += list.get(i).ID + ",";
+		for (int i = 0; i < list.size(); i++) {
+			majorQuestion += list.get(i).ID + ",";
 		}
 		return majorQuestion;
 	}
-	
-	//次要问题列项
-	public String getSubQuestionColumn(){
+
+	// 次要问题列项
+	public String getSubQuestionColumn() {
 		String subQuestion = "";
 		DBService dbService = new DBService();
 		List<SubQuestion> list = dbService.getSubQuestions();
-		for(int i = 0; i < list.size(); i++){
-				subQuestion += list.get(i).ID + ",";
+		for (int i = 0; i < list.size(); i++) {
+			subQuestion += list.get(i).ID + ",";
 		}
 		return subQuestion;
 	}
-	
+
 	// 存储列项信息
 	public void saveColumn() {
 		// 写入文件
@@ -115,4 +123,52 @@ public class QuestionFile implements Serializable {
 		}
 	}
 
+	// 存储第一部分题目
+	public void saveMajorQuestion(final List<MajorQuestion> list) {
+		String majorContent = "";
+		for (int i = 0; i < list.size(); i++) {
+			majorContent += list.get(i).selectedAnswer + ",";
+		}
+		// 写入文件
+		try {
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
+					+ INFORMATION_NAME), true);
+			fw.write(majorContent);
+			fw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 存储第二部分题目
+		public void saveSubQuestion(final List<SubQuestion> list) {
+			String subContent = "";
+			//拷贝出对应ID
+			DBService dbService = new DBService();
+			List<SubQuestion> allSubQuestionList = dbService.getSubQuestions();
+			int copyTag = 0;
+			for(int i = 0; i < list.size(); i++ ){
+				for(int j = copyTag; j < allSubQuestionList.size(); j ++){
+					//如果相等则获取选项
+					if(list.get(i).ID.equals(allSubQuestionList.get(j).ID)){
+						allSubQuestionList.get(j).selectedAnswer = list.get(i).selectedAnswer;
+						copyTag = j;
+						break;
+					}
+				}
+			}
+			
+			for (int i = 0; i < allSubQuestionList.size(); i++) {
+				subContent += allSubQuestionList.get(i).selectedAnswer + ",";
+			}
+			// 写入文件
+			try {
+				FileWriter fw = new FileWriter(new File(INFORMATION_PATH
+						+ INFORMATION_NAME), true);
+				fw.write(subContent);
+				fw.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 }

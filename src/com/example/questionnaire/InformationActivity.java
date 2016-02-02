@@ -11,6 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+/**
+ * 该类主要显示调查人信息
+ * @author su
+ *
+ */
+
 public class InformationActivity extends Activity {
 	// 声明GUI控件
 	private static Button infoBtn;
@@ -64,7 +70,7 @@ public class InformationActivity extends Activity {
 					questionFile.saveColumn();
 					questionFile.saveInformation(infoList);
 					Intent intent = new Intent(InformationActivity.this,
-							PersonInformationActivity.class);
+							MajorQuestionActivity.class);
 					Bundle bundle = new Bundle();
 					bundle.putSerializable("questionFile", questionFile);
 					intent.putExtras(bundle);

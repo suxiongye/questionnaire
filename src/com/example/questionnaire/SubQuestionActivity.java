@@ -30,6 +30,8 @@ public class SubQuestionActivity extends Activity {
 
 	// 题目
 	private static List<SubQuestion> list;
+	private static QuestionFile questionFile;
+
 	// 低于6分的题目ID
 	private static List<String> worstList;
 
@@ -87,11 +89,20 @@ public class SubQuestionActivity extends Activity {
 							break;
 						}
 					}
-				// 若题目全部做完则进入细化环节
-				if (allCheck == true) {
+					// 若题目全部做完则进入细化环节
+					if (allCheck == true) {
+						// 存储题目
+						// 获取题目对象
+						questionFile = (QuestionFile) getIntent()
+								.getSerializableExtra("questionFile");
+						questionFile.saveSubQuestion(list);
 						Intent intent = new Intent(SubQuestionActivity.this,
 								PersonInformationActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putSerializable("questionFile", questionFile);
+						intent.putExtras(bundle);
 						startActivity(intent);
+						SubQuestionActivity.this.finish();
 					}
 				}
 			}

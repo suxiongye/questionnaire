@@ -7,6 +7,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+/**
+ * 该类为与数据库交互类，负责存储与获取题目 
+ * @author su
+ *
+ */
+
 public class DBService {
 	private SQLiteDatabase db;
 	private String DB_PATH = Environment.getDataDirectory()+"/data/com.example.questionnaire/databases/questionnaire.db";
