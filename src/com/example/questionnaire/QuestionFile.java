@@ -21,6 +21,7 @@ public class QuestionFile implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String INFORMATION_NAME;
+	private static String COLUMN_NAME = "title.txt";
 	private String SDPATH = Environment.getExternalStorageDirectory()
 			.getAbsolutePath();
 	private String INFORMATION_PATH = SDPATH + "/questions/";
@@ -39,12 +40,12 @@ public class QuestionFile implements Serializable {
 
 	// 制作调查人信息列项
 	public String getInfoColumn() {
-		return "调查人姓名,调查日期,调查时间,调查区域,线路号,上车站点,上车站台类型,车辆类型,乘客性别,";
+		return "调查人姓名\t调查日期\t调查时间\t调查区域\t线路号\t上车站点\t上车站台类型\t车辆类型\t乘客性别\t";
 	}
 
 	// 制作个人信息列项
 	public String getPersonInfoColumn() {
-		return "收入,年龄,是否有车,出行目的,常坐公交,";
+		return "收入\t年龄\t是否有车\t出行目的\t常坐公交";
 	}
 
 	// 主要问题列项
@@ -53,7 +54,7 @@ public class QuestionFile implements Serializable {
 		DBService dbService = new DBService();
 		List<MajorQuestion> list = dbService.getMajorQuestions();
 		for (int i = 0; i < list.size(); i++) {
-			majorQuestion += list.get(i).ID + ",";
+			majorQuestion += list.get(i).ID + "\t";
 		}
 		return majorQuestion;
 	}
@@ -64,7 +65,7 @@ public class QuestionFile implements Serializable {
 		DBService dbService = new DBService();
 		List<SubQuestion> list = dbService.getSubQuestions();
 		for (int i = 0; i < list.size(); i++) {
-			subQuestion += list.get(i).ID + ",";
+			subQuestion += list.get(i).ID + "\t";
 		}
 		return subQuestion;
 	}
@@ -74,12 +75,11 @@ public class QuestionFile implements Serializable {
 		// 写入文件
 		try {
 			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-					+ INFORMATION_NAME), true);
+					+ COLUMN_NAME), false);
 			fw.write(getInfoColumn());
 			fw.write(getMajorQuestionColumn());
 			fw.write(getSubQuestionColumn());
 			fw.write(getPersonInfoColumn());
-			fw.write(System.getProperty("line.separator"));
 			fw.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class QuestionFile implements Serializable {
 	public void saveInformation(String[] list) {
 		String infoContent = "";
 		for (int i = 0; i < list.length; i++) {
-			infoContent += list[i] + ",";
+			infoContent += list[i] + "\t";
 		}
 		// 写入文件
 		try {
@@ -108,7 +108,7 @@ public class QuestionFile implements Serializable {
 		String infoContent = "";
 		for (int i = 0; i < list.length; i++) {
 			if (i != list.length - 1)
-				infoContent += list[i] + ",";
+				infoContent += list[i] + "\t";
 			else
 				infoContent += list[i];
 		}
@@ -127,7 +127,7 @@ public class QuestionFile implements Serializable {
 	public void saveMajorQuestion(final List<MajorQuestion> list) {
 		String majorContent = "";
 		for (int i = 0; i < list.size(); i++) {
-			majorContent += list.get(i).selectedAnswer + ",";
+			majorContent += list.get(i).selectedAnswer + "\t";
 		}
 		// 写入文件
 		try {
@@ -159,7 +159,7 @@ public class QuestionFile implements Serializable {
 			}
 			
 			for (int i = 0; i < allSubQuestionList.size(); i++) {
-				subContent += allSubQuestionList.get(i).selectedAnswer + ",";
+				subContent += allSubQuestionList.get(i).selectedAnswer + "\t";
 			}
 			// 写入文件
 			try {
