@@ -97,23 +97,25 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/subBtnPre"
-             android:layout_gravity="bottom"
+            style="?android:attr/segmentedButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|fill_vertical"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:text="@string/btnPre" />
 
         <Button
             android:id="@+id/subBtnNext"
+            style="?android:attr/segmentedButtonStyle"
             android:layout_width="0dp"
-            android:layout_gravity="bottom"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|fill_vertical"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:text="@string/btnNext" />
