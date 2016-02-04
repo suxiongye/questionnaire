@@ -5,6 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title">公共交通乘客满意度调查</string>
+    <string name="copyright">© Beijing University of Technology</string>
     <string name="start">开始调查</string>
     <string name="exit">退出</string>
     <string name="informationTitle">基本信息</string>
@@ -59,6 +60,8 @@
     <string name="purposeRadio7">其他</string>
     <string name="favoriteLineInput">请问您常乘坐的公交线路有哪些？</string>
     <string name="favoriteLineInputHint">输入1或2条即可</string>
+    <string name="opinionInput">您对北京公交有哪些建议和意见？</string>
+    <string name="opinionInputHint">请输入对北京公交的建议和意见</string>
     <string name="majorQuestionTitle">第一部分</string>
     <string name="subQuestionTitle">第二部分</string>
     <string name="questionContent">调查问题内容</string>

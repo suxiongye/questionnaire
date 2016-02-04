@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +39,10 @@ public class MajorQuestionActivity extends Activity {
 	// 题目
 	private static List<MajorQuestion> list;
 	private static QuestionFile questionFile;
-	
+
+	// 分数标准
+	private static int standard = 6;
+
 	// 低于6分的题目
 	private static List<String> worstList;
 
@@ -45,7 +50,19 @@ public class MajorQuestionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_majorquestion);
+		// 出现答题前提示
+		new AlertDialog.Builder(MajorQuestionActivity.this)
+				.setTitle("提示")
+				.setMessage(
+						"现在，我们要您问几个问题，来了解您对北京公交的体验。"
+								+ "请尽量回忆您的使用体验，时间不限于过去1周。没有正确或错误的答案，"
+								+ "您可以放心作答。您的观点对我们的分析非常重要，感谢您的参与")
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
 
+					}
+				}).show();
 		// 获取题目对象
 		questionFile = (QuestionFile) getIntent().getSerializableExtra(
 				"questionFile");
@@ -75,7 +92,7 @@ public class MajorQuestionActivity extends Activity {
 		current = 0;
 		count = list.size();
 
-		tv_label.setText(list.get(0).label);
+		tv_label.setText("您对各项" + list.get(0).label + "指标的满意程度？");
 		tv_content.setText(list.get(0).question);
 
 		// 设置上下翻页
@@ -83,6 +100,14 @@ public class MajorQuestionActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				//判断是否答题
+				boolean completed = false;
+				for(int i = 1; i <= 10; i++){
+					if(scoreRadios[i].isChecked() == true){
+						completed = true;
+					}
+				}
+				if(completed == false) return;
 				// 所有题目是否做完标志
 				if (current < count - 1) {
 					nextPage();
@@ -98,7 +123,7 @@ public class MajorQuestionActivity extends Activity {
 					}
 					// 若题目全部做完则进入细化环节
 					if (allCheck == true) {
-						//存入数据库
+						// 存入数据库
 						questionFile.saveMajorQuestion(list);
 						Intent intent = null;
 						// 放入低于6分的题目数组
@@ -116,6 +141,8 @@ public class MajorQuestionActivity extends Activity {
 						}
 						// 如果不存在低于6分的题目
 						else {
+							//存储空子题目
+							questionFile.saveSubQuestion();
 							intent = new Intent(MajorQuestionActivity.this,
 									PersonInformationActivity.class);
 							Bundle bundle = new Bundle();
@@ -160,8 +187,8 @@ public class MajorQuestionActivity extends Activity {
 		if (current > 0) {
 			current--;
 			MajorQuestion q = list.get(current);
-			tv_label.setText(q.label);
-			tv_content.setText(q.question);
+			tv_label.setText("您对各项" + q.label + "的满意程度？");
+			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择
@@ -176,8 +203,8 @@ public class MajorQuestionActivity extends Activity {
 		// 如果不是最后一页
 		current++;
 		MajorQuestion q = list.get(current);
-		tv_label.setText(q.label);
-		tv_content.setText(q.question);
+		tv_label.setText("您对各项" + q.label + "的满意程度？");
+		tv_content.setText(q.ID + " . " + q.question);
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
 		// 若题目被选中则显示原来选择
@@ -191,8 +218,8 @@ public class MajorQuestionActivity extends Activity {
 		if (n > -1 && n < count) {
 			current = n;
 			MajorQuestion q = list.get(current);
-			tv_label.setText(q.label);
-			tv_content.setText(q.question);
+			tv_label.setText("您对各项" + q.label + "的满意程度？");
+			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择
@@ -206,7 +233,7 @@ public class MajorQuestionActivity extends Activity {
 	private static List<String> getWorstList(List<MajorQuestion> list) {
 		List<String> worstList = new ArrayList<String>();
 		for (int i = 1; i < list.size(); i++) {
-			if (list.get(i).selectedAnswer < 6) {
+			if (list.get(i).selectedAnswer < standard) {
 				worstList.add(list.get(i).ID);
 			}
 		}

@@ -8,22 +8,22 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
 /**
- * 该类为与数据库交互类，负责存储与获取题目 
+ * 该类为与数据库交互类，负责存储与获取题目
+ * 
  * @author su
- *
+ * 
  */
 
 public class DBService {
 	private SQLiteDatabase db;
-	private String DB_PATH = Environment.getDataDirectory()+"/data/com.example.questionnaire/databases/questionnaire.db";
-	
+	private String DB_PATH = Environment.getDataDirectory()
+			+ "/data/com.example.questionnaire/databases/questionnaire.db";
+
 	// 打开数据库
 	public DBService() {
-		
-		db = SQLiteDatabase
-				.openDatabase(
-						DB_PATH,
-						null, SQLiteDatabase.OPEN_READWRITE);
+
+		db = SQLiteDatabase.openDatabase(DB_PATH, null,
+				SQLiteDatabase.OPEN_READWRITE);
 	}
 
 	// 从数据库中获取第一部分问题
@@ -68,7 +68,8 @@ public class DBService {
 				subQuestion.label = cursor.getString(cursor
 						.getColumnIndex("label"));
 				subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
-
+				subQuestion.belong = cursor.getString(cursor
+						.getColumnIndex("belong"));
 				list.add(subQuestion);
 			}
 		}
@@ -96,6 +97,8 @@ public class DBService {
 							.getColumnIndex("label"));
 					subQuestion.ID = cursor.getString(cursor
 							.getColumnIndex("id"));
+					subQuestion.belong = cursor.getString(cursor
+							.getColumnIndex("belong"));
 					list.add(subQuestion);
 				}
 			}

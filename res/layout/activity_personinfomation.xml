@@ -212,26 +212,44 @@
 
         <TextView
             android:id="@+id/favoriteLineTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_row="8"
             android:text="@string/favoriteLineInput" />
-        
-        <EditText 
+
+        <EditText
             android:id="@+id/favoriteLineEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_row="9"
             android:hint="@string/favoriteLineInputHint"
-            android:inputType="text"/>
-        <Button 
-            android:id="@+id/submitBtn"
-            android:layout_column="0"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/opinionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/submitText"/>
+            android:layout_column="0"
+            android:layout_row="10"
+            android:text="@string/opinionInput" />
+
+        <EditText
+            android:id="@+id/opinionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="11"
+            android:hint="@string/opinionInputHint"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:text="@string/submitText" />
     </GridLayout>
 
 </ScrollView>

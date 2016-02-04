@@ -3,6 +3,8 @@ package com.example.questionnaire;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -58,6 +60,16 @@ public class SubQuestionActivity extends Activity {
 		btn_next = (Button) findViewById(R.id.subBtnNext);
 		btn_pre = (Button) findViewById(R.id.subBtnPre);
 
+		// 出现答题前提示
+		new AlertDialog.Builder(SubQuestionActivity.this).setTitle("提示")
+				.setMessage("下面我们有一些您刚刚觉得不太满意的指标想再深入了解一下。【回答选项小于等于6的指标】")
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				}).show();
+
 		// 读取题目
 		DBService dbService = new DBService();
 		worstList = (List<String>) getIntent().getStringArrayListExtra(
@@ -69,13 +81,22 @@ public class SubQuestionActivity extends Activity {
 		count = list.size();
 
 		tv_label.setText(list.get(0).label);
-		tv_content.setText(list.get(0).question);
+		tv_content.setText(list.get(0).ID + ". " + list.get(0).question);
 
 		// 设置上下翻页
 		btn_next.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				// 判断是否答题
+				boolean completed = false;
+				for (int i = 1; i <= 10; i++) {
+					if (scoreRadios[i].isChecked() == true) {
+						completed = true;
+					}
+				}
+				if (completed != false)
+					return;
 				// 所有题目是否做完标志
 				if (current < count - 1) {
 					nextPage();
@@ -89,7 +110,7 @@ public class SubQuestionActivity extends Activity {
 							break;
 						}
 					}
-					// 若题目全部做完则进入细化环节
+					// 若题目全部做完则进入个人信息
 					if (allCheck == true) {
 						// 存储题目
 						// 获取题目对象
@@ -140,7 +161,7 @@ public class SubQuestionActivity extends Activity {
 			current--;
 			SubQuestion q = list.get(current);
 			tv_label.setText(q.label);
-			tv_content.setText(q.question);
+			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择
@@ -155,7 +176,7 @@ public class SubQuestionActivity extends Activity {
 		current++;
 		SubQuestion q = list.get(current);
 		tv_label.setText(q.label);
-		tv_content.setText(q.question);
+		tv_content.setText(q.ID + " . " + q.question);
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
 		// 若题目被选中则显示原来选择
@@ -170,7 +191,7 @@ public class SubQuestionActivity extends Activity {
 			current = n;
 			SubQuestion q = list.get(current);
 			tv_label.setText(q.label);
-			tv_content.setText(q.question);
+			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择

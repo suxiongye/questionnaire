@@ -1,9 +1,13 @@
 package com.example.questionnaire;
 
-import com.example.questionnaire.R.id;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
+import com.example.questionnaire.R.id;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,8 +17,9 @@ import android.widget.RadioButton;
 
 /**
  * 该类主要显示调查人信息
+ * 
  * @author su
- *
+ * 
  */
 
 public class InformationActivity extends Activity {
@@ -30,16 +35,17 @@ public class InformationActivity extends Activity {
 	private static RadioButton[] busTypeRadios;
 	private static RadioButton[] sexTypeRadios;
 	private static QuestionFile questionFile;
-	
 	// 存储信息
 	private static String[] infoList;
+
+	// 设置默认存储调查人相关信息
+	private static final String SEARCHERS = "searchers";
+	private static SharedPreferences saveSearchers;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_information);
-		questionFile = new QuestionFile();
-		
 		// GUI初始化
 		nameEditText = (EditText) findViewById(R.id.nameEditText);
 		dateEditText = (EditText) findViewById(R.id.dateEditText);
@@ -58,6 +64,42 @@ public class InformationActivity extends Activity {
 		sexTypeRadios[1] = (RadioButton) findViewById(R.id.sexWomanRadio);
 		infoList = new String[9];
 
+		// 初始化各个控件信息
+		// 获取已经填入过的信息
+		saveSearchers = getSharedPreferences(SEARCHERS, MODE_PRIVATE);
+		// 默认上次填入的信息
+		if (saveSearchers.getString("name", null) != null) {
+			nameEditText.setText(saveSearchers.getString("name", ""));
+		}
+		if (saveSearchers.getString("zone", null) != null) {
+			zoneEditText.setText(saveSearchers.getString("zone", ""));
+		}
+		if (saveSearchers.getString("line", null) != null) {
+			lineEditText.setText(saveSearchers.getString("line", ""));
+		}
+		if (saveSearchers.getString("stationname", null) != null) {
+			stationNameEditText.setText(saveSearchers.getString("stationname",
+					""));
+		}
+		if (saveSearchers.getString("stationtype", null) != null) {
+			stationTypeEditText.setText(saveSearchers.getString("stationtype",
+					""));
+		}
+
+		// 日期初始化
+		SimpleDateFormat dateFormater = new SimpleDateFormat("yyyyMMdd",
+				Locale.CHINA);
+		Date date = new Date(System.currentTimeMillis());
+		dateEditText.setText(dateFormater.format(date));
+		dateEditText.setEnabled(false);
+		// 时间初始化
+		SimpleDateFormat timeFormater = new SimpleDateFormat("HHmmss",
+				Locale.CHINA);
+		timeEditText.setText(timeFormater.format(date));
+		timeEditText.setEnabled(false);
+		// 生成问卷文件
+		questionFile = new QuestionFile(date);
+
 		// 进入下一个调查界面
 		infoBtn = (Button) findViewById(R.id.informationBtn);
 		infoBtn.setOnClickListener(new OnClickListener() {
@@ -66,7 +108,22 @@ public class InformationActivity extends Activity {
 				// TODO Auto-generated method stub
 				// 如果个人信息完善则可以开始调查
 				if (checkIfComplete() == true) {
-					//存储个人信息
+					// 在xml中存储个人信息
+					SharedPreferences.Editor preferencesEditor = saveSearchers
+							.edit();
+					preferencesEditor.putString("name", nameEditText.getText()
+							.toString());
+					preferencesEditor.putString("zone", zoneEditText.getText()
+							.toString());
+					preferencesEditor.putString("line", lineEditText.getText()
+							.toString());
+					preferencesEditor.putString("stationname",
+							stationNameEditText.getText().toString());
+					preferencesEditor.putString("stationtype",
+							stationTypeEditText.getText().toString());
+					preferencesEditor.apply();
+
+					// 在文件中存储个人信息
 					questionFile.saveColumn();
 					questionFile.saveInformation(infoList);
 					Intent intent = new Intent(InformationActivity.this,
@@ -86,43 +143,45 @@ public class InformationActivity extends Activity {
 		boolean completed = true;
 		if (nameEditText.getText() != null
 				&& nameEditText.getText().toString().trim().equals("") != true) {
-			infoList[0] = nameEditText.getText().toString();
+			infoList[0] = nameEditText.getText().toString().replace("\t", "");
 		} else {
 			return false;
 		}
 		if (dateEditText.getText() != null
 				&& dateEditText.getText().toString().trim().equals("") != true) {
-			infoList[1] = dateEditText.getText().toString();
+			infoList[1] = dateEditText.getText().toString().replace("\t", "");
 		} else {
 			return false;
 		}
 		if (timeEditText.getText() != null
 				&& timeEditText.getText().toString().trim().equals("") != true) {
-			infoList[2] = timeEditText.getText().toString();
+			infoList[2] = timeEditText.getText().toString().replace("\t", "");
 		} else {
 			return false;
 		}
 		if (zoneEditText.getText() != null
 				&& zoneEditText.getText().toString().trim().equals("") != true) {
-			infoList[3] = zoneEditText.getText().toString();
+			infoList[3] = zoneEditText.getText().toString().replace("\t", "");
 		} else {
 			return false;
 		}
 		if (lineEditText.getText() != null
 				&& lineEditText.getText().toString().trim().equals("") != true) {
-			infoList[4] = lineEditText.getText().toString();
+			infoList[4] = lineEditText.getText().toString().replace("\t", "");
 		} else {
 			return false;
 		}
 		if (stationNameEditText.getText() != null
 				&& stationNameEditText.getText().toString().trim().equals("") != true) {
-			infoList[5] = stationNameEditText.getText().toString();
+			infoList[5] = stationNameEditText.getText().toString()
+					.replace("\t", "");
 		} else {
 			return false;
 		}
 		if (stationTypeEditText.getText() != null
 				&& stationTypeEditText.getText().toString().trim().equals("") != true) {
-			infoList[6] = stationTypeEditText.getText().toString();
+			infoList[6] = stationTypeEditText.getText().toString()
+					.replace("\t", "");
 		} else {
 			return false;
 		}

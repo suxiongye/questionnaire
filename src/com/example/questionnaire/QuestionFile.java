@@ -3,7 +3,10 @@ package com.example.questionnaire;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.os.Environment;
 
@@ -26,8 +29,15 @@ public class QuestionFile implements Serializable {
 			.getAbsolutePath();
 	private String INFORMATION_PATH = SDPATH + "/questions/";
 
-	public QuestionFile() {
-		INFORMATION_NAME = Long.toString(System.currentTimeMillis()) + ".txt";
+	/**
+	 * 根据时间创建问卷名
+	 * 
+	 * @param date
+	 */
+	public QuestionFile(Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss",
+				Locale.CHINA);
+		INFORMATION_NAME = format.format(date) + ".txt";
 		// 存储问卷
 		if ((new File(INFORMATION_PATH + INFORMATION_NAME).exists()) == false) {
 			// 若不存在则生成目录
@@ -45,7 +55,7 @@ public class QuestionFile implements Serializable {
 
 	// 制作个人信息列项
 	public String getPersonInfoColumn() {
-		return "收入\t年龄\t是否有车\t出行目的\t常坐公交";
+		return "收入\t年龄\t是否有车\t出行目的\t常坐公交\t建议和意见";
 	}
 
 	// 主要问题列项
@@ -139,25 +149,45 @@ public class QuestionFile implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
-	// 存储第二部分题目
-		public void saveSubQuestion(final List<SubQuestion> list) {
-			String subContent = "";
-			//拷贝出对应ID
-			DBService dbService = new DBService();
-			List<SubQuestion> allSubQuestionList = dbService.getSubQuestions();
-			int copyTag = 0;
-			for(int i = 0; i < list.size(); i++ ){
-				for(int j = copyTag; j < allSubQuestionList.size(); j ++){
-					//如果相等则获取选项
-					if(list.get(i).ID.equals(allSubQuestionList.get(j).ID)){
-						allSubQuestionList.get(j).selectedAnswer = list.get(i).selectedAnswer;
-						copyTag = j;
-						break;
-					}
+
+	// 根据序号存储第二部分题目
+	public void saveSubQuestion(final List<SubQuestion> list) {
+		String subContent = "";
+		// 拷贝出对应ID
+		DBService dbService = new DBService();
+		List<SubQuestion> allSubQuestionList = dbService.getSubQuestions();
+		int copyTag = 0;
+		for (int i = 0; i < list.size(); i++) {
+			for (int j = copyTag; j < allSubQuestionList.size(); j++) {
+				// 如果相等则获取选项
+				if (list.get(i).ID.equals(allSubQuestionList.get(j).ID)) {
+					allSubQuestionList.get(j).selectedAnswer = list.get(i).selectedAnswer;
+					copyTag = j;
+					break;
 				}
 			}
-			
+		}
+
+		for (int i = 0; i < allSubQuestionList.size(); i++) {
+			subContent += allSubQuestionList.get(i).selectedAnswer + "\t";
+		}
+		// 写入文件
+		try {
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
+					+ INFORMATION_NAME), true);
+			fw.write(subContent);
+			fw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 存储未填的第二部分题目
+		public void saveSubQuestion() {
+			String subContent = "";
+			// 拷贝出对应ID
+			DBService dbService = new DBService();
+			List<SubQuestion> allSubQuestionList = dbService.getSubQuestions();
 			for (int i = 0; i < allSubQuestionList.size(); i++) {
 				subContent += allSubQuestionList.get(i).selectedAnswer + "\t";
 			}

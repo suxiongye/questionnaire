@@ -102,20 +102,20 @@
 
                 <Button
                     android:id="@+id/majorBtnPre"
+                    style="?android:attr/segmentedButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    style="?android:attr/segmentedButtonStyle"
-                    android:layout_gravity="bottom|fill_horizontal|fill_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
                     android:layout_weight="1"
                     android:text="@string/btnPre" />
 
                 <Button
                     android:id="@+id/majorBtnNext"
-                    android:layout_width="0dp"
                     style="?android:attr/segmentedButtonStyle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|fill_horizontal|fill_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
                     android:layout_weight="1"
                     android:text="@string/btnNext" />

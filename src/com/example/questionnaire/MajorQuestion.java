@@ -9,6 +9,6 @@ public class MajorQuestion {
 		public String question;
 		public String label;
 		public String ID;
-		
+		//已经选择的选项
 		public int selectedAnswer = -1;
 }

@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,10 +29,11 @@ public class MainActivity extends Activity {
 		startBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				//进入调查
 				Intent intent = new Intent(MainActivity.this,
 						InformationActivity.class);
 				startActivity(intent);
+				MainActivity.this.finish();
 			}
 		});
 		// 退出按钮

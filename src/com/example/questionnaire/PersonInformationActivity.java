@@ -1,6 +1,8 @@
 package com.example.questionnaire;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,7 @@ public class PersonInformationActivity extends Activity {
 	private static RadioButton[] carRadios;
 	private static RadioButton[] purposeRadios;
 	private static EditText favoriteLineEditText;
+	private static EditText opinionEditText;
 
 	// 存储功能
 	private static String[] infoList;
@@ -28,7 +31,7 @@ public class PersonInformationActivity extends Activity {
 		setContentView(R.layout.activity_personinfomation);
 
 		// 存储选项
-		infoList = new String[5];
+		infoList = new String[6];
 
 		// 绑定GUI
 		submitBtn = (Button) findViewById(R.id.submitBtn);
@@ -58,17 +61,41 @@ public class PersonInformationActivity extends Activity {
 		purposeRadios[5] = (RadioButton) findViewById(R.id.purposeRadio6);
 		purposeRadios[6] = (RadioButton) findViewById(R.id.purposeRadio7);
 		favoriteLineEditText = (EditText) findViewById(R.id.favoriteLineEditText);
-
+		opinionEditText = (EditText)findViewById(R.id.opinionEditText);
+		
 		// 获取题目对象
 		questionFile = (QuestionFile) getIntent().getSerializableExtra(
 				"questionFile");
 
+		// 出现答题前提示
+		new AlertDialog.Builder(PersonInformationActivity.this)
+				.setTitle("提示")
+				.setMessage(
+						"为了更好地分析调查结果，下面将采集一些简单的个人信息！")
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				}).show();
+		
 		// 设置提交之后返回主页面
 		submitBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				if (checkIfComplete() == true) {
+					// 出现答题前提示
+					new AlertDialog.Builder(PersonInformationActivity.this)
+							.setTitle("提示")
+							.setMessage(
+									"调查结束，谢谢参与！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+
+								}
+							}).show();
 					questionFile.savePersonInfo(infoList);
 					Intent intent = new Intent(PersonInformationActivity.this,
 							MainActivity.class);
@@ -86,7 +113,7 @@ public class PersonInformationActivity extends Activity {
 				&& incomeRadios[1].isChecked() == false
 				&& incomeRadios[2].isChecked() == false
 				&& incomeRadios[3].isChecked() == false
-				&& incomeRadios[3].isChecked() == false) {
+				&& incomeRadios[4].isChecked() == false) {
 			return false;
 		} else {
 			for (int i = 0; i < 5; i++) {
@@ -142,7 +169,13 @@ public class PersonInformationActivity extends Activity {
 		}
 		if (favoriteLineEditText.getText() != null
 				&& favoriteLineEditText.getText().toString().trim().equals("") != true) {
-			infoList[4] = favoriteLineEditText.getText().toString();
+			infoList[4] = favoriteLineEditText.getText().toString().replace("\t", "");
+		} else {
+			return false;
+		}
+		if (opinionEditText.getText() != null
+				&& opinionEditText.getText().toString().trim().equals("") != true) {
+			infoList[5] = opinionEditText.getText().toString().replace("\t", "");
 		} else {
 			return false;
 		}
