@@ -61,24 +61,22 @@ public class PersonInformationActivity extends Activity {
 		purposeRadios[5] = (RadioButton) findViewById(R.id.purposeRadio6);
 		purposeRadios[6] = (RadioButton) findViewById(R.id.purposeRadio7);
 		favoriteLineEditText = (EditText) findViewById(R.id.favoriteLineEditText);
-		opinionEditText = (EditText)findViewById(R.id.opinionEditText);
-		
+		opinionEditText = (EditText) findViewById(R.id.opinionEditText);
+
 		// 获取题目对象
 		questionFile = (QuestionFile) getIntent().getSerializableExtra(
 				"questionFile");
 
 		// 出现答题前提示
-		new AlertDialog.Builder(PersonInformationActivity.this)
-				.setTitle("提示")
-				.setMessage(
-						"为了更好地分析调查结果，下面将采集一些简单的个人信息！")
+		new AlertDialog.Builder(PersonInformationActivity.this).setTitle("提示")
+				.setMessage("为了更好地分析调查结果，下面将采集一些简单的个人信息！")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
 					}
 				}).show();
-		
+
 		// 设置提交之后返回主页面
 		submitBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -88,19 +86,24 @@ public class PersonInformationActivity extends Activity {
 					// 出现答题前提示
 					new AlertDialog.Builder(PersonInformationActivity.this)
 							.setTitle("提示")
-							.setMessage(
-									"调查结束，谢谢参与！")
-							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
+							.setMessage("调查结束，谢谢参与！")
+							.setPositiveButton("确定",
+									new DialogInterface.OnClickListener() {
+										@Override
+										public void onClick(
+												DialogInterface dialog,
+												int which) {
+											questionFile
+													.savePersonInfo(infoList);
+											Intent intent = new Intent(
+													PersonInformationActivity.this,
+													MainActivity.class);
+											startActivity(intent);
+											PersonInformationActivity.this
+													.finish();
+										}
+									}).show();
 
-								}
-							}).show();
-					questionFile.savePersonInfo(infoList);
-					Intent intent = new Intent(PersonInformationActivity.this,
-							MainActivity.class);
-					startActivity(intent);
-					PersonInformationActivity.this.finish();
 				}
 			}
 		});
@@ -169,13 +172,15 @@ public class PersonInformationActivity extends Activity {
 		}
 		if (favoriteLineEditText.getText() != null
 				&& favoriteLineEditText.getText().toString().trim().equals("") != true) {
-			infoList[4] = favoriteLineEditText.getText().toString().replace("\t", "");
+			infoList[4] = favoriteLineEditText.getText().toString()
+					.replace("\t", "");
 		} else {
 			return false;
 		}
 		if (opinionEditText.getText() != null
 				&& opinionEditText.getText().toString().trim().equals("") != true) {
-			infoList[5] = opinionEditText.getText().toString().replace("\t", "");
+			infoList[5] = opinionEditText.getText().toString()
+					.replace("\t", "");
 		} else {
 			return false;
 		}

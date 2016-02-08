@@ -95,7 +95,7 @@ public class SubQuestionActivity extends Activity {
 						completed = true;
 					}
 				}
-				if (completed != false)
+				if (completed == false)
 					return;
 				// 所有题目是否做完标志
 				if (current < count - 1) {
