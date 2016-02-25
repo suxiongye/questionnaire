@@ -14,39 +14,41 @@
         tools:context="com.example.questionnaire.MainActivity" >
 
         <Button
-            android:id="@+id/exitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:text="@string/exit" />
-
-        <Button
             android:id="@+id/startButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/exitButton"
-            android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:layout_marginBottom="50dp"
             android:layout_marginTop="50dp"
-            android:text="@string/start" />
+            android:text="@string/start"
+            android:textSize="40sp" />
 
         <TextView
+            android:id="@+id/textView1"
             style="@style/LabelTextView"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:text="@string/copyright" />
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="61dp"
-            android:gravity="center"
-            android:text="@string/title" />
+            android:layout_marginTop="60sp"
+            android:gravity="center_horizontal"
+            android:text="@string/title"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView1"
+            android:layout_marginBottom="116dp"
+            android:text="@string/exit"
+            android:textSize="40sp" />
+
     </RelativeLayout>
 
 </LinearLayout>

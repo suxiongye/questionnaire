@@ -6,6 +6,7 @@
 
     <TextView
         android:id="@+id/subQuestionLabel"
+        style="@style/SubQuestionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/questionLabel" />
@@ -22,6 +23,7 @@
 
             <TextView
                 android:id="@+id/subQuestionContentTextView"
+                style="@style/SubQuestionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/questionContent" >
@@ -29,65 +31,76 @@
 
             <RadioGroup
                 android:id="@+id/subChooseRadioGroup"
+                android:background="@drawable/satisfy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
                 <RadioButton
                     android:id="@+id/subChooseRadio1"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore1" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio2"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore2" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio3"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore3" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio4"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore4" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio5"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore5" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio6"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore6" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio7"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore7" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio8"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore8" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio9"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore9" />
 
                 <RadioButton
                     android:id="@+id/subChooseRadio10"
+                    style="@style/SubQuestionRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore10" />
@@ -98,6 +111,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
         android:orientation="horizontal" >
 
         <Button
@@ -105,20 +119,24 @@
             style="?android:attr/segmentedButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|fill_vertical"
-            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10sp"
+            android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:text="@string/btnPre" />
+            android:text="@string/btnPre"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/subBtnNext"
             style="?android:attr/segmentedButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|fill_vertical"
-            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10sp"
+            android:layout_marginStart="10sp"
             android:layout_weight="1"
-            android:text="@string/btnNext" />
+            android:text="@string/btnNext"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

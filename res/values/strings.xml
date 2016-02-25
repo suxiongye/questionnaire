@@ -68,6 +68,7 @@
     <string name="questionLabel">标签</string>
     <string name="btnNext">下一题</string>
     <string name="btnPre">上一题</string>
+    <string name="choosePic">满意度图片</string>
     <string name="chooseScore1">1</string>
     <string name="chooseScore2">2</string>
     <string name="chooseScore3">3</string>

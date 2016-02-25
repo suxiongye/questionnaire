@@ -145,24 +145,28 @@
                 android:id="@+id/busType1Radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/InformationRadio"
                 android:text="@string/busType1" />
 
             <RadioButton
                 android:id="@+id/busType2Radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/InformationRadio"
                 android:text="@string/busType2" />
 
             <RadioButton
                 android:id="@+id/busType3Radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/InformationRadio"
                 android:text="@string/busType3" />
 
             <RadioButton
                 android:id="@+id/busType4Radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/InformationRadio"
                 android:text="@string/busType4" />
         </RadioGroup>
 
@@ -184,12 +188,14 @@
                 android:id="@+id/sexManRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/InformationRadio"
                 android:text="@string/sexMan" />
 
             <RadioButton
                 android:id="@+id/sexWomanRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/InformationRadio"
                 android:text="@string/sexWoman" />
         </RadioGroup>
 
@@ -200,6 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
             android:layout_row="9"
+            android:textSize="20sp"
             android:text="@string/infoBtn" />
     </GridLayout>
 

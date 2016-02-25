@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    tools:context=".PersonInformationActivity" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/majorQuestionLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/MajorQuestionTextView"
         android:text="@string/questionLabel" />
 
     <ScrollView
         android:id="@+id/majorQustionScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,78 +26,92 @@
                 android:id="@+id/majorQuestionContentTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/MajorQuestionTextView"
                 android:text="@string/questionContent" >
             </TextView>
-
+            
             <RadioGroup
+                android:background="@drawable/satisfy"
                 android:id="@+id/majorChooseRadioGroup"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content" 
+                android:layout_weight="5">
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore1" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore2" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore3" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore4" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore5" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore6" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore7" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore8" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore9" />
 
                 <RadioButton
                     android:id="@+id/majorChooseRadio10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/MajorQuestionRadio"
                     android:text="@string/chooseScore10" />
             </RadioGroup>
-
+           
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
                 android:orientation="horizontal" >
 
                 <Button
@@ -105,9 +119,11 @@
                     style="?android:attr/segmentedButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginRight="10sp"
                     android:layout_weight="1"
+                    android:textSize="20sp"
                     android:text="@string/btnPre" />
 
                 <Button
@@ -115,9 +131,11 @@
                     style="?android:attr/segmentedButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginLeft="10sp"
                     android:layout_weight="1"
+                    android:textSize="20sp"
                     android:text="@string/btnNext" />
             </LinearLayout>
         </LinearLayout>

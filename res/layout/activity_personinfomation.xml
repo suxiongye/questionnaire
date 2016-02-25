@@ -18,6 +18,7 @@
             android:id="@+id/incomeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_gravity="center_vertical"
             android:layout_row="0"
@@ -33,30 +34,35 @@
 
             <RadioButton
                 android:id="@+id/incomeRadio1"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/incomeRadio1" />
 
             <RadioButton
                 android:id="@+id/incomeRadio2"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/incomeRadio2" />
 
             <RadioButton
                 android:id="@+id/incomeRadio3"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/incomeRadio3" />
 
             <RadioButton
                 android:id="@+id/incomeRadio4"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/incomeRadio4" />
 
             <RadioButton
                 android:id="@+id/incomeRadio5"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/incomeRadio5" />
@@ -66,6 +72,7 @@
             android:id="@+id/ageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_gravity="center_vertical"
             android:layout_row="2"
@@ -83,42 +90,49 @@
                 android:id="@+id/ageRadio1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio1" />
 
             <RadioButton
                 android:id="@+id/ageRadio2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio2" />
 
             <RadioButton
                 android:id="@+id/ageRadio3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio3" />
 
             <RadioButton
                 android:id="@+id/ageRadio4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio4" />
 
             <RadioButton
                 android:id="@+id/ageRadio5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio5" />
 
             <RadioButton
                 android:id="@+id/ageRadio6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio6" />
 
             <RadioButton
                 android:id="@+id/ageRadio7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio7" />
         </RadioGroup>
 
@@ -126,6 +140,7 @@
             android:id="@+id/carTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="4"
             android:text="@string/carInput" />
@@ -142,12 +157,14 @@
                 android:id="@+id/carYesRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/carYesRadio" />
 
             <RadioButton
                 android:id="@+id/carNoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/carNoRadio" />
         </RadioGroup>
 
@@ -155,6 +172,7 @@
             android:id="@+id/purposeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="6"
             android:text="@string/purposeInput" />
@@ -171,42 +189,49 @@
                 android:id="@+id/purposeRadio1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio1" />
 
             <RadioButton
                 android:id="@+id/purposeRadio2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio2" />
 
             <RadioButton
                 android:id="@+id/purposeRadio3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio3" />
 
             <RadioButton
                 android:id="@+id/purposeRadio4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio4" />
 
             <RadioButton
                 android:id="@+id/purposeRadio5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio5" />
 
             <RadioButton
                 android:id="@+id/purposeRadio6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio6" />
 
             <RadioButton
                 android:id="@+id/purposeRadio7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio7" />
         </RadioGroup>
 
@@ -214,6 +239,7 @@
             android:id="@+id/favoriteLineTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="8"
             android:text="@string/favoriteLineInput" />
@@ -222,6 +248,7 @@
             android:id="@+id/favoriteLineEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="9"
             android:hint="@string/favoriteLineInputHint"
@@ -231,6 +258,7 @@
             android:id="@+id/opinionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="10"
             android:text="@string/opinionInput" />
@@ -239,6 +267,7 @@
             android:id="@+id/opinionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="11"
             android:hint="@string/opinionInputHint"
@@ -249,6 +278,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_column="0"
+            style="@style/PersonInfoTextView"
             android:text="@string/submitText" />
     </GridLayout>
 
