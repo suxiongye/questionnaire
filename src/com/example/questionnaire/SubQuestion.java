@@ -5,5 +5,5 @@ public class SubQuestion {
 		public String ID;
 		public String belong;
 		
-		public int selectedAnswer = -1;
+		public int selectedAnswer = 0;
 }

@@ -104,7 +104,7 @@ public class SubQuestionActivity extends Activity {
 					boolean allCheck = true;
 					// 如果是最后一页则判断是否全部题目完成
 					for (int i = 0; i < list.size(); i++) {
-						if (list.get(i).selectedAnswer == -1) {
+						if (list.get(i).selectedAnswer == 0) {
 							toPage(i);
 							allCheck = false;
 							break;
@@ -165,7 +165,7 @@ public class SubQuestionActivity extends Activity {
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择
-			if (q.selectedAnswer != -1) {
+			if (q.selectedAnswer != 0) {
 				scoreRadios[q.selectedAnswer].setChecked(true);
 			}
 		}
@@ -180,7 +180,7 @@ public class SubQuestionActivity extends Activity {
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
 		// 若题目被选中则显示原来选择
-		if (q.selectedAnswer != -1) {
+		if (q.selectedAnswer != 0) {
 			scoreRadios[q.selectedAnswer].setChecked(true);
 		}
 	}
@@ -195,7 +195,7 @@ public class SubQuestionActivity extends Activity {
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择
-			if (q.selectedAnswer != -1) {
+			if (q.selectedAnswer != 0) {
 				scoreRadios[q.selectedAnswer].setChecked(true);
 			}
 		}
