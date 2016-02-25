@@ -1,10 +1,9 @@
 package com.example.questionnaire;
 
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +34,7 @@ public class SubQuestionActivity extends Activity {
 	private static QuestionFile questionFile;
 
 	// 低于6分的题目ID
-	private static List<String> worstList;
+	private static String worstList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +59,9 @@ public class SubQuestionActivity extends Activity {
 		btn_next = (Button) findViewById(R.id.subBtnNext);
 		btn_pre = (Button) findViewById(R.id.subBtnPre);
 
-		// 出现答题前提示
-		new AlertDialog.Builder(SubQuestionActivity.this).setTitle("提示")
-				.setMessage("下面我们有一些您刚刚觉得不太满意的指标想再深入了解一下。【回答选项小于等于6的指标】")
-				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
-					}
-				}).show();
-
 		// 读取题目
 		DBService dbService = new DBService();
-		worstList = (List<String>) getIntent().getStringArrayListExtra(
-				"worstList");
+		worstList = getIntent().getStringExtra("worstList");
 		list = dbService.getSubQuestions(worstList);
 
 		// 设置当前题目信息
@@ -110,19 +98,21 @@ public class SubQuestionActivity extends Activity {
 							break;
 						}
 					}
-					// 若题目全部做完则进入个人信息
+					// 若题目全部做完则退出
 					if (allCheck == true) {
 						// 存储题目
 						// 获取题目对象
-						questionFile = (QuestionFile) getIntent()
-								.getSerializableExtra("questionFile");
-						questionFile.saveSubQuestion(list);
-						Intent intent = new Intent(SubQuestionActivity.this,
-								PersonInformationActivity.class);
-						Bundle bundle = new Bundle();
-						bundle.putSerializable("questionFile", questionFile);
-						intent.putExtras(bundle);
-						startActivity(intent);
+						questionFile = (QuestionFile) getIntent().getSerializableExtra("questionFile");
+						if (list.get(list.size() - 1).ID.equals("060203") != true) {
+							// 返回答题结果
+							Intent intent = new Intent();
+							Bundle bundle = new Bundle();
+							bundle.putSerializable("subquestion", (Serializable) list);
+							intent.putExtras(bundle);
+							setResult(2, intent);
+						} else {
+							questionFile.saveSubQuestion(list);
+						}
 						SubQuestionActivity.this.finish();
 					}
 				}
@@ -138,20 +128,19 @@ public class SubQuestionActivity extends Activity {
 			}
 		});
 		// 设置选项监听器
-		scoreRadioGroup
-				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(RadioGroup arg0, int arg1) {
-						// TODO Auto-generated method stub
-						// 判断哪个选项被选中
-						for (int i = 1; i <= 10; i++) {
-							if (scoreRadios[i].isChecked() == true) {
-								list.get(current).selectedAnswer = i;
-								break;
-							}
-						}
+		scoreRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup arg0, int arg1) {
+				// TODO Auto-generated method stub
+				// 判断哪个选项被选中
+				for (int i = 1; i <= 10; i++) {
+					if (scoreRadios[i].isChecked() == true) {
+						list.get(current).selectedAnswer = i;
+						break;
 					}
-				});
+				}
+			}
+		});
 	}
 
 	// 跳转道上一页函数

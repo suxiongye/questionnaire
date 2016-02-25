@@ -16,9 +16,9 @@
 
         <TextView
             android:id="@+id/incomeTextView"
+            style="@style/PersonInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_gravity="center_vertical"
             android:layout_row="0"
@@ -70,9 +70,9 @@
 
         <TextView
             android:id="@+id/ageTextView"
+            style="@style/PersonInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_gravity="center_vertical"
             android:layout_row="2"
@@ -88,59 +88,59 @@
 
             <RadioButton
                 android:id="@+id/ageRadio1"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio1" />
 
             <RadioButton
                 android:id="@+id/ageRadio2"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio2" />
 
             <RadioButton
                 android:id="@+id/ageRadio3"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio3" />
 
             <RadioButton
                 android:id="@+id/ageRadio4"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio4" />
 
             <RadioButton
                 android:id="@+id/ageRadio5"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio5" />
 
             <RadioButton
                 android:id="@+id/ageRadio6"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio6" />
 
             <RadioButton
                 android:id="@+id/ageRadio7"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/ageRadio7" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/carTextView"
+            style="@style/PersonInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="4"
             android:text="@string/carInput" />
@@ -155,24 +155,24 @@
 
             <RadioButton
                 android:id="@+id/carYesRadio"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/carYesRadio" />
 
             <RadioButton
                 android:id="@+id/carNoRadio"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/carNoRadio" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/purposeTextView"
+            style="@style/PersonInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="6"
             android:text="@string/purposeInput" />
@@ -187,68 +187,68 @@
 
             <RadioButton
                 android:id="@+id/purposeRadio1"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio1" />
 
             <RadioButton
                 android:id="@+id/purposeRadio2"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio2" />
 
             <RadioButton
                 android:id="@+id/purposeRadio3"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio3" />
 
             <RadioButton
                 android:id="@+id/purposeRadio4"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio4" />
 
             <RadioButton
                 android:id="@+id/purposeRadio5"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio5" />
 
             <RadioButton
                 android:id="@+id/purposeRadio6"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio6" />
 
             <RadioButton
                 android:id="@+id/purposeRadio7"
+                style="@style/PersonInfoRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonInfoRadio"
                 android:text="@string/purposeRadio7" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/favoriteLineTextView"
+            style="@style/PersonInfoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="8"
             android:text="@string/favoriteLineInput" />
 
         <EditText
             android:id="@+id/favoriteLineEditText"
+            style="@style/PersonInfoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="9"
             android:hint="@string/favoriteLineInputHint"
@@ -256,18 +256,18 @@
 
         <TextView
             android:id="@+id/opinionTextView"
+            style="@style/PersonInfoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="10"
             android:text="@string/opinionInput" />
 
         <EditText
             android:id="@+id/opinionEditText"
+            style="@style/PersonInfoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/PersonInfoTextView"
             android:layout_column="0"
             android:layout_row="11"
             android:hint="@string/opinionInputHint"
@@ -275,10 +275,10 @@
 
         <Button
             android:id="@+id/submitBtn"
+            style="@style/PersonInfoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_column="0"
-            style="@style/PersonInfoTextView"
             android:text="@string/submitText" />
     </GridLayout>
 

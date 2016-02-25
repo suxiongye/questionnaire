@@ -22,8 +22,7 @@ public class DBService {
 	// 打开数据库
 	public DBService() {
 
-		db = SQLiteDatabase.openDatabase(DB_PATH, null,
-				SQLiteDatabase.OPEN_READWRITE);
+		db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE);
 	}
 
 	// 从数据库中获取第一部分问题
@@ -38,12 +37,9 @@ public class DBService {
 				cursor.moveToPosition(i);
 				// 与数据库一一对应
 				MajorQuestion majorQuestion = new MajorQuestion();
-				majorQuestion.question = cursor.getString(cursor
-						.getColumnIndex("question"));
-				majorQuestion.label = cursor.getString(cursor
-						.getColumnIndex("label"));
-				majorQuestion.ID = cursor
-						.getString(cursor.getColumnIndex("id"));
+				majorQuestion.question = cursor.getString(cursor.getColumnIndex("question"));
+				majorQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
+				majorQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
 
 				list.add(majorQuestion);
 			}
@@ -63,25 +59,21 @@ public class DBService {
 				cursor.moveToPosition(i);
 				// 与数据库一一对应
 				SubQuestion subQuestion = new SubQuestion();
-				subQuestion.question = cursor.getString(cursor
-						.getColumnIndex("question"));
-				subQuestion.label = cursor.getString(cursor
-						.getColumnIndex("label"));
+				subQuestion.question = cursor.getString(cursor.getColumnIndex("question"));
+				subQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
 				subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
-				subQuestion.belong = cursor.getString(cursor
-						.getColumnIndex("belong"));
+				subQuestion.belong = cursor.getString(cursor.getColumnIndex("belong"));
 				list.add(subQuestion);
 			}
 		}
 		return list;
 	}
 
-	// 根据ID获取第二部分题目数组
+	// 根据ID的String数组获取第二部分题目数组
 	public List<SubQuestion> getSubQuestions(List<String> worstList) {
 		List<SubQuestion> list = new ArrayList<SubQuestion>();
 		for (int i = 0; i < worstList.size(); i++) {
-			Cursor cursor = db.rawQuery(
-					"select * from subquestion where belong = ? ",
+			Cursor cursor = db.rawQuery("select * from subquestion where belong = ? ",
 					new String[] { worstList.get(i) });
 			// 获取问题数目并逐个添加到question数组
 			if (cursor.getCount() > 0) {
@@ -91,18 +83,38 @@ public class DBService {
 					cursor.moveToPosition(j);
 					// 与数据库一一对应
 					SubQuestion subQuestion = new SubQuestion();
-					subQuestion.question = cursor.getString(cursor
-							.getColumnIndex("question"));
-					subQuestion.label = cursor.getString(cursor
-							.getColumnIndex("label"));
-					subQuestion.ID = cursor.getString(cursor
-							.getColumnIndex("id"));
-					subQuestion.belong = cursor.getString(cursor
-							.getColumnIndex("belong"));
+					subQuestion.question = cursor.getString(cursor.getColumnIndex("question"));
+					subQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
+					subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
+					subQuestion.belong = cursor.getString(cursor.getColumnIndex("belong"));
 					list.add(subQuestion);
 				}
 			}
 		}
+		return list;
+	}
+
+	// 根据ID的String获取第二部分题目数组
+	public List<SubQuestion> getSubQuestions(String worstList) {
+		List<SubQuestion> list = new ArrayList<SubQuestion>();
+
+		Cursor cursor = db.rawQuery("select * from subquestion where belong = ? ", new String[] { worstList });
+		// 获取问题数目并逐个添加到question数组
+		if (cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			int count = cursor.getCount();
+			for (int j = 0; j < count; j++) {
+				cursor.moveToPosition(j);
+				// 与数据库一一对应
+				SubQuestion subQuestion = new SubQuestion();
+				subQuestion.question = cursor.getString(cursor.getColumnIndex("question"));
+				subQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
+				subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
+				subQuestion.belong = cursor.getString(cursor.getColumnIndex("belong"));
+				list.add(subQuestion);
+			}
+		}
+
 		return list;
 	}
 }

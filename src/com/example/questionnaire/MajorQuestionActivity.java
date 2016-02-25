@@ -1,6 +1,6 @@
 package com.example.questionnaire;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
@@ -38,25 +38,26 @@ public class MajorQuestionActivity extends Activity {
 
 	// 题目
 	private static List<MajorQuestion> list;
+	private static List<SubQuestion> list_sub;
 	private static QuestionFile questionFile;
 
 	// 分数标准
 	private static int standard = 6;
 
 	// 低于6分的题目
-	private static List<String> worstList;
+	private static String worstList;
+
+	// 返回结果码
+	private final int REQUESTCODE = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_majorquestion);
 		// 出现答题前提示
-		new AlertDialog.Builder(MajorQuestionActivity.this)
-				.setTitle("提示")
-				.setMessage(
-						"现在，我们要您问几个问题，来了解您对北京公交的体验。"
-								+ "请尽量回忆您的使用体验，时间不限于过去1周。没有正确或错误的答案，"
-								+ "您可以放心作答。您的观点对我们的分析非常重要，感谢您的参与")
+		new AlertDialog.Builder(MajorQuestionActivity.this).setTitle("提示")
+				.setMessage("现在，我们要您问几个问题，来了解您对北京公交的体验。" + "请尽量回忆您的使用体验，时间不限于过去1周。没有正确或错误的答案，"
+						+ "您可以放心作答。您的观点对我们的分析非常重要，感谢您的参与")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -64,8 +65,7 @@ public class MajorQuestionActivity extends Activity {
 					}
 				}).show();
 		// 获取题目对象
-		questionFile = (QuestionFile) getIntent().getSerializableExtra(
-				"questionFile");
+		questionFile = (QuestionFile) getIntent().getSerializableExtra("questionFile");
 		// 绑定控件
 		tv_label = (TextView) findViewById(R.id.majorQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.majorQuestionContentTextView);
@@ -87,6 +87,7 @@ public class MajorQuestionActivity extends Activity {
 		// 读取题目
 		DBService dbService = new DBService();
 		list = dbService.getMajorQuestions();
+		list_sub = dbService.getSubQuestions();
 
 		// 设置当前题目信息
 		current = 0;
@@ -100,60 +101,79 @@ public class MajorQuestionActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				//判断是否答题
+				// 判断是否答题
 				boolean completed = false;
-				for(int i = 1; i <= 10; i++){
-					if(scoreRadios[i].isChecked() == true){
+				int i = 1;
+				for (i = 1; i <= 10; i++) {
+					if (scoreRadios[i].isChecked() == true) {
 						completed = true;
+						break;
 					}
 				}
-				if(completed == false) return;
-				
+				if (completed == false)
+					return;
+
 				// 所有题目是否做完标志
 				if (current < count - 1) {
+					// 判断题目是否达到标准
+					if (i < standard && current != 0) {
+						worstList = list.get(current).ID;
+						// 进入对应子题目进行作答
+						Intent intent = null;
+						intent = new Intent(MajorQuestionActivity.this, SubQuestionActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putString("worstList", worstList);
+						bundle.putSerializable("subquestion", (Serializable) list_sub);
+						bundle.putSerializable("questionFile", questionFile);
+						intent.putExtras(bundle);
+						startActivityForResult(intent, REQUESTCODE);
+
+					}
 					nextPage();
 				} else {
 					boolean allCheck = true;
-					// 如果是最后一页则判断是否全部题目完成
-					for (int i = 0; i < list.size(); i++) {
+					// 如果是最后一页
+					// 则判断是否全部题目完成
+					for (i = 0; i < list.size(); i++) {
 						if (list.get(i).selectedAnswer == 0) {
 							toPage(i);
 							allCheck = false;
 							break;
 						}
 					}
-					// 若题目全部做完则进入细化环节
+					// 若题目全部做完则进入个人信息
 					if (allCheck == true) {
 						// 存入数据库
+						// 存储父题目
 						questionFile.saveMajorQuestion(list);
+						// 判断题目是否达到标准
+						if (i < standard && current != 0) {
+							worstList = list.get(current).ID;
+							// 进入对应子题目进行作答
+							Intent intent = null;
+							intent = new Intent(MajorQuestionActivity.this, SubQuestionActivity.class);
+							Bundle bundle = new Bundle();
+							bundle.putString("worstList", worstList);
+							bundle.putSerializable("subquestion", (Serializable) list_sub);
+							bundle.putSerializable("questionFile", questionFile);
+							intent.putExtras(bundle);
+							startActivity(intent);
+
+						}
+						// 存储子题目
+						questionFile.saveSubQuestion(list_sub);
 						Intent intent = null;
-						// 放入低于6分的题目数组
-						worstList = getWorstList(list);
-						// 如果存在低于6分的题目
-						if (worstList.size() != 0) {
-							intent = new Intent(MajorQuestionActivity.this,
-									SubQuestionActivity.class);
-							Bundle bundle = new Bundle();
-							bundle.putStringArrayList("worstList",
-									(ArrayList<String>) worstList);
-							bundle.putSerializable("questionFile", questionFile);
-							intent.putExtras(bundle);
-							startActivity(intent);
-						}
-						// 如果不存在低于6分的题目
-						else {
-							//存储空子题目
-							questionFile.saveSubQuestion();
-							intent = new Intent(MajorQuestionActivity.this,
-									PersonInformationActivity.class);
-							Bundle bundle = new Bundle();
-							bundle.putSerializable("questionFile", questionFile);
-							intent.putExtras(bundle);
-							startActivity(intent);
-						}
-						MajorQuestionActivity.this.finish();
+						intent = new Intent(MajorQuestionActivity.this, PersonInformationActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putSerializable("questionFile", questionFile);
+						intent.putExtras(bundle);
+						startActivity(intent);
+
 					}
+
+					MajorQuestionActivity.this.finish();
 				}
+
 			}
 		});
 
@@ -166,20 +186,19 @@ public class MajorQuestionActivity extends Activity {
 			}
 		});
 		// 设置选项监听器
-		scoreRadioGroup
-				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(RadioGroup arg0, int arg1) {
-						// TODO Auto-generated method stub
-						// 判断哪个选项被选中
-						for (int i = 1; i <= 10; i++) {
-							if (scoreRadios[i].isChecked() == true) {
-								list.get(current).selectedAnswer = i;
-								break;
-							}
-						}
+		scoreRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup arg0, int arg1) {
+				// TODO Auto-generated method stub
+				// 判断哪个选项被选中
+				for (int i = 1; i <= 10; i++) {
+					if (scoreRadios[i].isChecked() == true) {
+						list.get(current).selectedAnswer = i;
+						break;
 					}
-				});
+				}
+			}
+		});
 	}
 
 	// 跳转道上一页函数
@@ -230,14 +249,30 @@ public class MajorQuestionActivity extends Activity {
 		}
 	}
 
-	// 选出需要细化调查的题目
-	private static List<String> getWorstList(List<MajorQuestion> list) {
-		List<String> worstList = new ArrayList<String>();
-		for (int i = 1; i < list.size(); i++) {
-			if (list.get(i).selectedAnswer < standard) {
-				worstList.add(list.get(i).ID);
+	// 接收返回数据
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		// 获取答题结果
+		if (resultCode == 2) {
+			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
+			fixSubQuestion(request);
+		}
+	}
+
+	// 将两个子题目答案List重合
+	private static void fixSubQuestion(List<SubQuestion> request) {
+		int copyTag = 0;
+		for (int i = 0; i < request.size(); i++) {
+			for (int j = copyTag; j < list_sub.size(); j++) {
+				// 如果相等则获取选项
+				if (request.get(i).ID.equals(list_sub.get(j).ID)) {
+					list_sub.get(j).selectedAnswer = request.get(i).selectedAnswer;
+					copyTag = j;
+					break;
+				}
 			}
 		}
-		return worstList;
 	}
 }

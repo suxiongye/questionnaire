@@ -1,5 +1,9 @@
 package com.example.questionnaire;
-public class SubQuestion {
+
+import java.io.Serializable;
+
+public class SubQuestion implements Serializable {
+	private static final long serialVersionUID = 1L;
 		public String question;
 		public String label;
 		public String ID;
