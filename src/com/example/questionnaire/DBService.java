@@ -16,6 +16,7 @@ import android.os.Environment;
 
 public class DBService {
 	private SQLiteDatabase db;
+	private static List<MajorQuestion> list_major = null;
 	private String DB_PATH = Environment.getDataDirectory()
 			+ "/data/com.example.questionnaire/databases/questionnaire.db";
 
@@ -27,7 +28,7 @@ public class DBService {
 
 	// 从数据库中获取第一部分问题
 	public List<MajorQuestion> getMajorQuestions() {
-		List<MajorQuestion> list = new ArrayList<MajorQuestion>();
+		list_major = new ArrayList<MajorQuestion>();
 		Cursor cursor = db.rawQuery("select * from majorquestion", null);
 		// 获取问题数目并逐个添加到question数组
 		if (cursor.getCount() > 0) {
@@ -41,10 +42,10 @@ public class DBService {
 				majorQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
 				majorQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
 
-				list.add(majorQuestion);
+				list_major.add(majorQuestion);
 			}
 		}
-		return list;
+		return list_major;
 	}
 
 	// 从数据库中获取第二部分问题
@@ -116,5 +117,10 @@ public class DBService {
 		}
 
 		return list;
+	}
+	
+	//获取第一部分题目数组最后一个ID
+	public String getLastMajorQuestionID(){
+		return list_major.get(list_major.size()-1).ID;
 	}
 }

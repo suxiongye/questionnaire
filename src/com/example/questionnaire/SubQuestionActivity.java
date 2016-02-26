@@ -31,8 +31,7 @@ public class SubQuestionActivity extends Activity {
 
 	// 题目
 	private static List<SubQuestion> list;
-	private static QuestionFile questionFile;
-
+	private static DBService dbService;
 	// 低于6分的题目ID
 	private static String worstList;
 
@@ -60,7 +59,7 @@ public class SubQuestionActivity extends Activity {
 		btn_pre = (Button) findViewById(R.id.subBtnPre);
 
 		// 读取题目
-		DBService dbService = new DBService();
+		dbService = new DBService();
 		worstList = getIntent().getStringExtra("worstList");
 		list = dbService.getSubQuestions(worstList);
 
@@ -102,16 +101,14 @@ public class SubQuestionActivity extends Activity {
 					if (allCheck == true) {
 						// 存储题目
 						// 获取题目对象
-						questionFile = (QuestionFile) getIntent().getSerializableExtra("questionFile");
-						if (list.get(list.size() - 1).ID.equals("060203") != true) {
-							// 返回答题结果
-							Intent intent = new Intent();
-							Bundle bundle = new Bundle();
-							bundle.putSerializable("subquestion", (Serializable) list);
-							intent.putExtras(bundle);
-							setResult(2, intent);
-						} else {
-							questionFile.saveSubQuestion(list);
+						Intent intent = new Intent();
+						Bundle bundle = new Bundle();
+						bundle.putSerializable("subquestion", (Serializable) list);
+						intent.putExtras(bundle);
+						setResult(2, intent);
+						// 判断是否是最后一题的子题目
+						if (list.get(0).belong.equals(dbService.getLastMajorQuestionID())==true) {
+							setResult(3, intent);
 						}
 						SubQuestionActivity.this.finish();
 					}

@@ -94,7 +94,7 @@ public class MajorQuestionActivity extends Activity {
 		count = list.size();
 
 		tv_label.setText("您对各项" + list.get(0).label + "指标的满意程度？");
-		tv_content.setText(list.get(0).question);
+		tv_content.setText(list.get(0).ID + " . " + list.get(0).question);
 
 		// 设置上下翻页
 		btn_next.setOnClickListener(new OnClickListener() {
@@ -112,23 +112,20 @@ public class MajorQuestionActivity extends Activity {
 				}
 				if (completed == false)
 					return;
+				// 判断题目是否达到标准
+				if (i < standard && current != 0) {
+					worstList = list.get(current).ID;
+					// 进入对应子题目进行作答
+					Intent intent = null;
+					intent = new Intent(MajorQuestionActivity.this, SubQuestionActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putString("worstList", worstList);
+					intent.putExtras(bundle);
+					startActivityForResult(intent, REQUESTCODE);
 
+				}
 				// 所有题目是否做完标志
 				if (current < count - 1) {
-					// 判断题目是否达到标准
-					if (i < standard && current != 0) {
-						worstList = list.get(current).ID;
-						// 进入对应子题目进行作答
-						Intent intent = null;
-						intent = new Intent(MajorQuestionActivity.this, SubQuestionActivity.class);
-						Bundle bundle = new Bundle();
-						bundle.putString("worstList", worstList);
-						bundle.putSerializable("subquestion", (Serializable) list_sub);
-						bundle.putSerializable("questionFile", questionFile);
-						intent.putExtras(bundle);
-						startActivityForResult(intent, REQUESTCODE);
-
-					}
 					nextPage();
 				} else {
 					boolean allCheck = true;
@@ -143,35 +140,9 @@ public class MajorQuestionActivity extends Activity {
 					}
 					// 若题目全部做完则进入个人信息
 					if (allCheck == true) {
-						// 存入数据库
-						// 存储父题目
-						questionFile.saveMajorQuestion(list);
-						// 判断题目是否达到标准
-						if (i < standard && current != 0) {
-							worstList = list.get(current).ID;
-							// 进入对应子题目进行作答
-							Intent intent = null;
-							intent = new Intent(MajorQuestionActivity.this, SubQuestionActivity.class);
-							Bundle bundle = new Bundle();
-							bundle.putString("worstList", worstList);
-							bundle.putSerializable("subquestion", (Serializable) list_sub);
-							bundle.putSerializable("questionFile", questionFile);
-							intent.putExtras(bundle);
-							startActivity(intent);
-
-						}
-						// 存储子题目
-						questionFile.saveSubQuestion(list_sub);
-						Intent intent = null;
-						intent = new Intent(MajorQuestionActivity.this, PersonInformationActivity.class);
-						Bundle bundle = new Bundle();
-						bundle.putSerializable("questionFile", questionFile);
-						intent.putExtras(bundle);
-						startActivity(intent);
+						
 
 					}
-
-					MajorQuestionActivity.this.finish();
 				}
 
 			}
@@ -258,6 +229,23 @@ public class MajorQuestionActivity extends Activity {
 		if (resultCode == 2) {
 			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
 			fixSubQuestion(request);
+		}
+		//若是答题结束则进入个人信息
+		if (resultCode == 3) {
+			// 存入数据库
+			// 存储父题目
+			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
+			fixSubQuestion(request);
+			questionFile.saveMajorQuestion(list);
+			// 存储子题目
+			questionFile.saveSubQuestion(list_sub);
+			Intent intent = null;
+			intent = new Intent(MajorQuestionActivity.this, PersonInformationActivity.class);
+			Bundle bundle = new Bundle();
+			bundle.putSerializable("questionFile", questionFile);
+			intent.putExtras(bundle);
+			startActivity(intent);
+			this.finish();
 		}
 	}
 
