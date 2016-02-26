@@ -140,8 +140,8 @@ public class MajorQuestionActivity extends Activity {
 					}
 					// 若题目全部做完则进入个人信息
 					if (allCheck == true) {
-						
-
+						// 存储父题目
+						questionFile.saveMajorQuestion(list);
 					}
 				}
 
@@ -233,10 +233,10 @@ public class MajorQuestionActivity extends Activity {
 		//若是答题结束则进入个人信息
 		if (resultCode == 3) {
 			// 存入数据库
-			// 存储父题目
+			
 			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
 			fixSubQuestion(request);
-			questionFile.saveMajorQuestion(list);
+			
 			// 存储子题目
 			questionFile.saveSubQuestion(list_sub);
 			Intent intent = null;
