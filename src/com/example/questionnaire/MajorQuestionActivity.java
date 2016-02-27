@@ -138,11 +138,24 @@ public class MajorQuestionActivity extends Activity {
 							break;
 						}
 					}
-					// 若题目全部做完则进入个人信息
+					// 若题目全部做完则保存题目
 					if (allCheck == true) {
 						// 存储父题目
 						questionFile.saveMajorQuestion(list);
+						//若不用进入细化调查则直接进入下一环节
+						if(i >= standard){
+							// 存储子题目
+							questionFile.saveSubQuestion(list_sub);
+							Intent intent = null;
+							intent = new Intent(MajorQuestionActivity.this, PersonInformationActivity.class);
+							Bundle bundle = new Bundle();
+							bundle.putSerializable("questionFile", questionFile);
+							intent.putExtras(bundle);
+							startActivity(intent);
+							MajorQuestionActivity.this.finish();
+						}
 					}
+					
 				}
 
 			}
