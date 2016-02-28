@@ -25,8 +25,7 @@ public class QuestionFile implements Serializable {
 
 	private String INFORMATION_NAME;
 	private static String COLUMN_NAME = "title.txt";
-	private String SDPATH = Environment.getExternalStorageDirectory()
-			.getAbsolutePath();
+	private String SDPATH = Environment.getExternalStorageDirectory().getAbsolutePath();
 	private String INFORMATION_PATH = SDPATH + "/questions/";
 
 	/**
@@ -35,8 +34,7 @@ public class QuestionFile implements Serializable {
 	 * @param date
 	 */
 	public QuestionFile(Date date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss",
-				Locale.CHINA);
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA);
 		INFORMATION_NAME = format.format(date) + ".txt";
 		// 存储问卷
 		if ((new File(INFORMATION_PATH + INFORMATION_NAME).exists()) == false) {
@@ -84,8 +82,7 @@ public class QuestionFile implements Serializable {
 	public void saveColumn() {
 		// 写入文件
 		try {
-			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-					+ COLUMN_NAME), false);
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH + COLUMN_NAME), false);
 			fw.write(getInfoColumn());
 			fw.write(getMajorQuestionColumn());
 			fw.write(getSubQuestionColumn());
@@ -104,8 +101,7 @@ public class QuestionFile implements Serializable {
 		}
 		// 写入文件
 		try {
-			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-					+ INFORMATION_NAME), true);
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH + INFORMATION_NAME), true);
 			fw.write(infoContent);
 			fw.close();
 		} catch (Exception e) {
@@ -124,8 +120,7 @@ public class QuestionFile implements Serializable {
 		}
 		// 写入文件
 		try {
-			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-					+ INFORMATION_NAME), true);
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH + INFORMATION_NAME), true);
 			fw.write(infoContent);
 			fw.close();
 		} catch (Exception e) {
@@ -141,8 +136,7 @@ public class QuestionFile implements Serializable {
 		}
 		// 写入文件
 		try {
-			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-					+ INFORMATION_NAME), true);
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH + INFORMATION_NAME), true);
 			fw.write(majorContent);
 			fw.close();
 		} catch (Exception e) {
@@ -173,32 +167,30 @@ public class QuestionFile implements Serializable {
 		}
 		// 写入文件
 		try {
-			FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-					+ INFORMATION_NAME), true);
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH + INFORMATION_NAME), true);
 			fw.write(subContent);
 			fw.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 存储未填的第二部分题目
-		public void saveSubQuestion() {
-			String subContent = "";
-			// 拷贝出对应ID
-			DBService dbService = new DBService();
-			List<SubQuestion> allSubQuestionList = dbService.getSubQuestions();
-			for (int i = 0; i < allSubQuestionList.size(); i++) {
-				subContent += allSubQuestionList.get(i).selectedAnswer + "\t";
-			}
-			// 写入文件
-			try {
-				FileWriter fw = new FileWriter(new File(INFORMATION_PATH
-						+ INFORMATION_NAME), true);
-				fw.write(subContent);
-				fw.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	public void saveSubQuestion() {
+		String subContent = "";
+		// 拷贝出对应ID
+		DBService dbService = new DBService();
+		List<SubQuestion> allSubQuestionList = dbService.getSubQuestions();
+		for (int i = 0; i < allSubQuestionList.size(); i++) {
+			subContent += allSubQuestionList.get(i).selectedAnswer + "\t";
 		}
+		// 写入文件
+		try {
+			FileWriter fw = new FileWriter(new File(INFORMATION_PATH + INFORMATION_NAME), true);
+			fw.write(subContent);
+			fw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

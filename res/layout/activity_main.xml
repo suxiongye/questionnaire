@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -13,42 +14,52 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.example.questionnaire.MainActivity" >
 
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/exitButton"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/start"
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/textView1"
-            style="@style/LabelTextView"
-            android:layout_alignParentBottom="true"
-            android:text="@string/copyright" />
-
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="60sp"
+            android:layout_marginTop="60dp"
             android:gravity="center_horizontal"
             android:text="@string/title"
             android:textSize="40sp" />
 
-        <Button
-            android:id="@+id/exitButton"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/mainBtnLinearLayout"
+            android:layout_width="700dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView1"
-            android:layout_marginBottom="116dp"
-            android:text="@string/exit"
-            android:textSize="40sp" />
+            android:layout_below="@+id/titleTextView"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical" >
 
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:layout_marginTop="100dp"
+                android:background="#adaaff00"
+                android:text="@string/start"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="56dp"
+                android:background="#ad00a0f5"
+                android:text="@string/exit"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/LabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/copyright" />
     </RelativeLayout>
 
 </LinearLayout>

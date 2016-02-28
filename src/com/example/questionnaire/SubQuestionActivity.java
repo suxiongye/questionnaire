@@ -107,7 +107,7 @@ public class SubQuestionActivity extends Activity {
 						intent.putExtras(bundle);
 						setResult(2, intent);
 						// 判断是否是最后一题的子题目
-						if (list.get(0).belong.equals(dbService.getLastMajorQuestionID())==true) {
+						if (list.get(0).belong.equals(dbService.getLastMajorQuestionID()) == true) {
 							setResult(3, intent);
 						}
 						SubQuestionActivity.this.finish();

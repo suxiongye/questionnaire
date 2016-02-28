@@ -1,8 +1,6 @@
 package com.example.questionnaire;
 
-import java.io.Serializable;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -142,8 +140,8 @@ public class MajorQuestionActivity extends Activity {
 					if (allCheck == true) {
 						// 存储父题目
 						questionFile.saveMajorQuestion(list);
-						//若不用进入细化调查则直接进入下一环节
-						if(i >= standard){
+						// 若不用进入细化调查则直接进入下一环节
+						if (list.get(list.size() - 1).selectedAnswer >= standard) {
 							// 存储子题目
 							questionFile.saveSubQuestion(list_sub);
 							Intent intent = null;
@@ -155,7 +153,7 @@ public class MajorQuestionActivity extends Activity {
 							MajorQuestionActivity.this.finish();
 						}
 					}
-					
+
 				}
 
 			}
@@ -243,13 +241,12 @@ public class MajorQuestionActivity extends Activity {
 			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
 			fixSubQuestion(request);
 		}
-		//若是答题结束则进入个人信息
+		// 若是答题结束则进入个人信息
 		if (resultCode == 3) {
 			// 存入数据库
-			
 			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
 			fixSubQuestion(request);
-			
+
 			// 存储子题目
 			questionFile.saveSubQuestion(list_sub);
 			Intent intent = null;
