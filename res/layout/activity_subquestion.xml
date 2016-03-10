@@ -105,6 +105,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chooseScore10" />
+                <RadioButton
+                    android:id="@+id/subChooseRadio11"
+                    style="@style/SubQuestionRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chooseScore11" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>
@@ -122,7 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="10sp"
-            android:layout_marginRight="10sp"
             android:layout_weight="1"
             android:text="@string/btnPre"
             android:textSize="20sp" />
@@ -133,7 +138,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10sp"
             android:layout_marginStart="10sp"
             android:layout_weight="1"
             android:text="@string/btnNext"

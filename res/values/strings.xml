@@ -19,10 +19,13 @@
     <string name="zoneInputHint">请输入调查区域</string>
     <string name="lineInput">线路号：</string>
     <string name="lineInputHint">请输入调查线路号</string>
-    <string name="stationNameInput">上车站台：</string>
+    <string name="stationNameInput">上车站台名称：</string>
     <string name="stationNameInputHint">请输入上车站台</string>
     <string name="stationTypeInput">上车站台类型：</string>
     <string name="stationTypeInputHint">请输入上车站台类型</string>
+    <string name="stationType1">枢纽站</string>
+    <string name="stationType2">路侧普通站</string>
+    <string name="stationType3">港湾式停靠站</string>
     <string name="busTypeInput">车辆类型：</string>
     <string name="busType1">双层巴士</string>
     <string name="busType2">绞接巴士</string>
@@ -79,6 +82,7 @@
     <string name="chooseScore8">8</string>
     <string name="chooseScore9">9</string>
     <string name="chooseScore10">10</string>
+    <string name="chooseScore11">不了解</string>
     <string name="submitText">提交</string>
     
 </resources>

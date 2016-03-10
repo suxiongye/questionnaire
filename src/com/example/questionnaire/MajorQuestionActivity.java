@@ -68,7 +68,7 @@ public class MajorQuestionActivity extends Activity {
 		tv_label = (TextView) findViewById(R.id.majorQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.majorQuestionContentTextView);
 		scoreRadioGroup = (RadioGroup) findViewById(R.id.majorChooseRadioGroup);
-		scoreRadios = new RadioButton[11];
+		scoreRadios = new RadioButton[12];
 		scoreRadios[1] = (RadioButton) findViewById(R.id.majorChooseRadio1);
 		scoreRadios[2] = (RadioButton) findViewById(R.id.majorChooseRadio2);
 		scoreRadios[3] = (RadioButton) findViewById(R.id.majorChooseRadio3);
@@ -79,6 +79,7 @@ public class MajorQuestionActivity extends Activity {
 		scoreRadios[8] = (RadioButton) findViewById(R.id.majorChooseRadio8);
 		scoreRadios[9] = (RadioButton) findViewById(R.id.majorChooseRadio9);
 		scoreRadios[10] = (RadioButton) findViewById(R.id.majorChooseRadio10);
+		scoreRadios[11] = (RadioButton) findViewById(R.id.majorChooseRadio11);
 		btn_next = (Button) findViewById(R.id.majorBtnNext);
 		btn_pre = (Button) findViewById(R.id.majorBtnPre);
 
@@ -102,14 +103,23 @@ public class MajorQuestionActivity extends Activity {
 				// 判断是否答题
 				boolean completed = false;
 				int i = 1;
-				for (i = 1; i <= 10; i++) {
+				for (i = 1; i <= 11; i++) {
 					if (scoreRadios[i].isChecked() == true) {
 						completed = true;
 						break;
 					}
 				}
-				if (completed == false)
+				if (completed == false) {
+					// 出现提示
+					new AlertDialog.Builder(MajorQuestionActivity.this).setTitle("提示").setMessage("请至少选中一个选项！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					}).show();
 					return;
+				}
 				// 判断题目是否达到标准
 				if (i < standard && current != 0) {
 					worstList = list.get(current).ID;
@@ -173,7 +183,7 @@ public class MajorQuestionActivity extends Activity {
 			public void onCheckedChanged(RadioGroup arg0, int arg1) {
 				// TODO Auto-generated method stub
 				// 判断哪个选项被选中
-				for (int i = 1; i <= 10; i++) {
+				for (int i = 1; i <= 11; i++) {
 					if (scoreRadios[i].isChecked() == true) {
 						list.get(current).selectedAnswer = i;
 						break;

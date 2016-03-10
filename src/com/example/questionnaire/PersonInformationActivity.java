@@ -105,6 +105,16 @@ public class PersonInformationActivity extends Activity {
 									}).show();
 
 				}
+				else{
+					// 出现提示
+					new AlertDialog.Builder(PersonInformationActivity.this).setTitle("提示").setMessage("信息未填全！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					}).show();
+				}
 			}
 		});
 	}
