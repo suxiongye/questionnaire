@@ -65,8 +65,8 @@
     <string name="favoriteLineInputHint">输入1或2条即可</string>
     <string name="opinionInput">您对北京公交有哪些建议和意见？</string>
     <string name="opinionInputHint">请输入对北京公交的建议和意见</string>
-    <string name="majorQuestionTitle">第一部分</string>
-    <string name="subQuestionTitle">第二部分</string>
+    <string name="majorQuestionTitle">总体指标</string>
+    <string name="subQuestionTitle">三级指标</string>
     <string name="questionContent">调查问题内容</string>
     <string name="questionLabel">标签</string>
     <string name="btnNext">下一题</string>

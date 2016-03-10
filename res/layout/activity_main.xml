@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
             android:text="@string/title"
             android:textSize="40sp" />
@@ -36,8 +36,8 @@
                 android:id="@+id/startButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/button1"
                 android:text="@string/start"
                 android:textSize="35sp" />
@@ -46,7 +46,7 @@
                 android:id="@+id/exitButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="56dp"
+                android:layout_marginBottom="36dp"
                 android:background="@drawable/button2"
                 android:text="@string/exit"
                 android:textSize="35sp" />
