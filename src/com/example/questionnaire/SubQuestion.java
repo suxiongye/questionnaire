@@ -8,6 +8,6 @@ public class SubQuestion implements Serializable {
 		public String label;
 		public String ID;
 		public String belong;
-		
+		public String belongContent;
 		public int selectedAnswer = 0;
 }

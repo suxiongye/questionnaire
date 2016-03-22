@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">公共交通乘客满意度调查</string>
+    <string name="app_name">北京市地面公交满意度调查</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title">公共交通乘客满意度调查</string>

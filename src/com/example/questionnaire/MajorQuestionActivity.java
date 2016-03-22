@@ -41,7 +41,7 @@ public class MajorQuestionActivity extends Activity {
 	private static QuestionFile questionFile;
 
 	// 分数标准
-	private static int standard = 6;
+	private static int standard = 7;
 
 	// 低于6分的题目
 	private static String worstList;

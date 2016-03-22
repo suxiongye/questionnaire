@@ -70,7 +70,7 @@ public class SubQuestionActivity extends Activity {
 		current = 0;
 		count = list.size();
 
-		tv_label.setText(list.get(0).label);
+		tv_label.setText(list.get(0).label+"  ——  "+list.get(0).belongContent);
 		tv_label.getPaint().setFakeBoldText(true);
 		tv_content.setText(list.get(0).ID + ". " + list.get(0).question);
 
@@ -159,7 +159,7 @@ public class SubQuestionActivity extends Activity {
 		if (current > 0) {
 			current--;
 			SubQuestion q = list.get(current);
-			tv_label.setText(q.label);
+			tv_label.setText(q.label+"  ——  "+q.belongContent);
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
@@ -174,7 +174,7 @@ public class SubQuestionActivity extends Activity {
 	private static void nextPage() {
 		current++;
 		SubQuestion q = list.get(current);
-		tv_label.setText(q.label);
+		tv_label.setText(q.label+"  ——  "+q.belongContent);
 		tv_content.setText(q.ID + " . " + q.question);
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
@@ -189,7 +189,7 @@ public class SubQuestionActivity extends Activity {
 		if (n > -1 && n < count) {
 			current = n;
 			SubQuestion q = list.get(current);
-			tv_label.setText(q.label);
+			tv_label.setText(q.label+"  ——  "+q.belongContent);
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
