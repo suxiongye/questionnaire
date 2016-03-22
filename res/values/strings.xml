@@ -30,7 +30,7 @@
     <string name="busTypeInput">车辆类型：</string>
     <string name="busType1">双层巴士</string>
     <string name="busType2">绞接巴士</string>
-    <string name="busType3">低地台巴士</string>
+    <string name="busType3">非绞接巴士</string>
     <string name="busType4">其他</string>
     <string name="sexInput">乘客性别：</string>
     <string name="sexMan">男</string>

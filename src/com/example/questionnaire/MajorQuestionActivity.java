@@ -97,7 +97,7 @@ public class MajorQuestionActivity extends Activity {
 		setTitle("一级指标");
 
 		tv_label.setText(Html.fromHtml("您对各项<b>" + list.get(0).label + "</b>指标的满意程度？"));
-		tv_content.setText(list.get(0).ID + " . " + list.get(0).question);
+		tv_content.setText(list.get(0).question);
 
 		// 设置上下翻页
 		btn_next.setOnClickListener(new OnClickListener() {
@@ -207,7 +207,10 @@ public class MajorQuestionActivity extends Activity {
 			current--;
 			MajorQuestion q = list.get(current);
 			tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
+			if(q.ID == "C")
 			tv_content.setText(q.ID + " . " + q.question);
+			else
+				tv_content.setText(q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择

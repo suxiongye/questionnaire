@@ -123,7 +123,7 @@
             android:layout_marginLeft="20sp"
             android:layout_marginEnd="10sp"
             android:layout_weight="1"
-            android:background="#c3c4ca"
+            android:background="#afc3c4ca"
             android:text="@string/btnPre"
             android:textSize="20sp" />
 
@@ -136,7 +136,7 @@
             android:layout_marginStart="10sp"
             android:layout_marginRight="20sp"
             android:layout_weight="1"
-            android:background="#c3c4ca"
+            android:background="#afc3c4ca"
             android:text="@string/btnNext"
             android:textSize="20sp" />
     </LinearLayout>
