@@ -15,7 +15,7 @@
     <string name="dateInputHint">请输入八位数字的调查日期</string>
     <string name="timeInput">调查时间：</string>
     <string name="timeInputHint">请输入六位数字调查时间</string>
-    <string name="zoneInput">调查区域：</string>
+    <string name="zoneInput">行政区域：</string>
     <string name="zoneInputHint">请输入调查区域</string>
     <string name="lineInput">线路号：</string>
     <string name="lineInputHint">请输入调查线路号</string>
@@ -26,6 +26,7 @@
     <string name="stationType1">枢纽站</string>
     <string name="stationType2">路侧普通站</string>
     <string name="stationType3">港湾式停靠站</string>
+    <string name="stationType4">其他</string>
     <string name="busTypeInput">车辆类型：</string>
     <string name="busType1">双层巴士</string>
     <string name="busType2">绞接巴士</string>
@@ -65,7 +66,7 @@
     <string name="favoriteLineInputHint">输入1或2条即可</string>
     <string name="opinionInput">您对北京公交有哪些建议和意见？</string>
     <string name="opinionInputHint">请输入对北京公交的建议和意见</string>
-    <string name="majorQuestionTitle">总体指标</string>
+    <string name="majorQuestionTitle">二级指标</string>
     <string name="subQuestionTitle">三级指标</string>
     <string name="questionContent">调查问题内容</string>
     <string name="questionLabel">标签</string>

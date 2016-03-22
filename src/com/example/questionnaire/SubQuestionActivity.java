@@ -71,6 +71,7 @@ public class SubQuestionActivity extends Activity {
 		count = list.size();
 
 		tv_label.setText(list.get(0).label);
+		tv_label.getPaint().setFakeBoldText(true);
 		tv_content.setText(list.get(0).ID + ". " + list.get(0).question);
 
 		// 设置上下翻页

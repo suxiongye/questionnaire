@@ -55,10 +55,11 @@ public class InformationActivity extends Activity {
 		zoneEditText = (EditText) findViewById(R.id.zoneEditText);
 		lineEditText = (EditText) findViewById(R.id.lineEditText);
 		stationNameEditText = (EditText) findViewById(id.stationNameEditText);
-		busStaTypeRadios = new RadioButton[3];
+		busStaTypeRadios = new RadioButton[4];
 		busStaTypeRadios[0] = (RadioButton) findViewById(R.id.busStaType1Radio);
 		busStaTypeRadios[1] = (RadioButton) findViewById(R.id.busStaType2Radio);
 		busStaTypeRadios[2] = (RadioButton) findViewById(R.id.busStaType3Radio);
+		busStaTypeRadios[3] = (RadioButton) findViewById(R.id.busStaType4Radio);
 		busTypeRadios = new RadioButton[4];
 		busTypeRadios[0] = (RadioButton) findViewById(R.id.busType1Radio);
 		busTypeRadios[1] = (RadioButton) findViewById(R.id.busType2Radio);
@@ -173,10 +174,10 @@ public class InformationActivity extends Activity {
 		}
 
 		if (busStaTypeRadios[0].isChecked() == false && busStaTypeRadios[1].isChecked() == false
-				&& busStaTypeRadios[2].isChecked() == false) {
+				&& busStaTypeRadios[2].isChecked() == false&& busStaTypeRadios[3].isChecked() == false) {
 			return false;
 		} else {
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 4; i++) {
 				if (busStaTypeRadios[i].isChecked() == true) {
 					infoList[6] = Integer.toString(i + 1);
 					break;

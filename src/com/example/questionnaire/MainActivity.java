@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -18,9 +20,13 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		AssetManager mgr = getAssets();
+		Typeface tf = Typeface.createFromAsset(mgr, "font/hwxw.ttf");
+		
 		// 开始按钮
 		Button startBtn = (Button) findViewById(R.id.startButton);
+		startBtn.setTypeface(tf);
 		// 判断是否插入SD卡
 		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) == false) {
 			startBtn.setText("请插入SD卡");
@@ -36,7 +42,7 @@ public class MainActivity extends Activity {
 		});
 		// 退出按钮
 		Button exitBtn = (Button) findViewById(R.id.exitButton);
-
+		exitBtn.setTypeface(tf);
 		exitBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

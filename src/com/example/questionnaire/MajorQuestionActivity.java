@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -52,6 +53,7 @@ public class MajorQuestionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_majorquestion);
+
 		// 出现答题前提示
 		new AlertDialog.Builder(MajorQuestionActivity.this).setTitle("提示")
 				.setMessage("现在，我们要您问几个问题，来了解您对北京公交的体验。" + "请尽量回忆您的使用体验，时间不限于过去1周。没有正确或错误的答案，"
@@ -92,7 +94,9 @@ public class MajorQuestionActivity extends Activity {
 		current = 0;
 		count = list.size();
 
-		tv_label.setText("您对各项" + list.get(0).label + "指标的满意程度？");
+		setTitle("一级指标");
+
+		tv_label.setText(Html.fromHtml("您对各项<b>" + list.get(0).label + "</b>指标的满意程度？"));
 		tv_content.setText(list.get(0).ID + " . " + list.get(0).question);
 
 		// 设置上下翻页
@@ -165,7 +169,7 @@ public class MajorQuestionActivity extends Activity {
 					}
 
 				}
-
+				setTitle("二级指标");
 			}
 		});
 
@@ -175,6 +179,8 @@ public class MajorQuestionActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				prePage();
+				if (current == 0)
+					setTitle("一级指标");
 			}
 		});
 		// 设置选项监听器
@@ -195,11 +201,12 @@ public class MajorQuestionActivity extends Activity {
 
 	// 跳转道上一页函数
 	private static void prePage() {
+
 		// 如果不是第一页
 		if (current > 0) {
 			current--;
 			MajorQuestion q = list.get(current);
-			tv_label.setText("您对各项" + q.label + "的满意程度？");
+			tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
@@ -215,7 +222,7 @@ public class MajorQuestionActivity extends Activity {
 		// 如果不是最后一页
 		current++;
 		MajorQuestion q = list.get(current);
-		tv_label.setText("您对各项" + q.label + "的满意程度？");
+		tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
 		tv_content.setText(q.ID + " . " + q.question);
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
@@ -230,7 +237,7 @@ public class MajorQuestionActivity extends Activity {
 		if (n > -1 && n < count) {
 			current = n;
 			MajorQuestion q = list.get(current);
-			tv_label.setText("您对各项" + q.label + "的满意程度？");
+			tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();

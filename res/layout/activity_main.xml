@@ -15,21 +15,20 @@
         tools:context="com.example.questionnaire.MainActivity" >
 
         <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="match_parent"
+            android:id="@+id/textView1"
+            style="@style/LabelTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="@string/title"
-            android:textSize="40sp" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/copyright" />
 
         <LinearLayout
             android:id="@+id/mainBtnLinearLayout"
             android:layout_width="700dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titleTextView"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:orientation="vertical" >
 
             <Button
@@ -52,14 +51,6 @@
                 android:textSize="35sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView1"
-            style="@style/LabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:text="@string/copyright" />
     </RelativeLayout>
 
 </LinearLayout>

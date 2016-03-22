@@ -1,150 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/question_background"
-    android:orientation="vertical" >
+    android:layout_height="match_parent"
+    android:background="@drawable/time1" >
 
     <TextView
         android:id="@+id/majorQuestionLabel"
         style="@style/MajorQuestionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:text="@string/questionLabel" />
 
-    <ScrollView
-        android:id="@+id/majorQustionScrollView"
+    <TextView
+        android:id="@+id/majorQuestionContentTextView"
+        style="@style/MajorQuestionTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/majorQuestionLabel"
+        android:text="@string/questionContent" >
+    </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <RadioGroup
+        android:id="@+id/majorChooseRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/majorQuestionContentTextView"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/majorChooseRadio1"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="@string/chooseScore1" />
 
-            <TextView
-                android:id="@+id/majorQuestionContentTextView"
-                style="@style/MajorQuestionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/questionContent" >
-            </TextView>
+        <RadioButton
+            android:id="@+id/majorChooseRadio2"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore2" />
 
-            <RadioGroup
-                android:id="@+id/majorChooseRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="0px"
-                android:layout_weight="5"
-                android:background="@drawable/satisfy" >
+        <RadioButton
+            android:id="@+id/majorChooseRadio3"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore3" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio1"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore1" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio4"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore4" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio2"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore2" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio5"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore5" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio3"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore3" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio6"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore6" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio4"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore4" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio7"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore7" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio5"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore5" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio8"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore8" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio6"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore6" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio9"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore9" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio7"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore7" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio10"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore10" />
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio8"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore8" />
+        <RadioButton
+            android:id="@+id/majorChooseRadio11"
+            style="@style/MajorQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore11" />
+    </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio9"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore9" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal" >
 
-                <RadioButton
-                    android:id="@+id/majorChooseRadio10"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore10" />
-                
-                <RadioButton
-                    android:id="@+id/majorChooseRadio11"
-                    style="@style/MajorQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore11" />
-            </RadioGroup>
+        <Button
+            android:id="@+id/majorBtnPre"
+            style="?android:attr/segmentedButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20sp"
+            android:layout_marginEnd="10sp"
+            android:layout_weight="1"
+            android:background="#c3c4ca"
+            android:text="@string/btnPre"
+            android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2sp"
-                android:orientation="horizontal" >
+        <Button
+            android:id="@+id/majorBtnNext"
+            style="?android:attr/segmentedButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10sp"
+            android:layout_marginRight="20sp"
+            android:layout_weight="1"
+            android:background="#c3c4ca"
+            android:text="@string/btnNext"
+            android:textSize="20sp" />
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/majorBtnPre"
-                    style="?android:attr/segmentedButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10sp"
-                    android:layout_weight="1"
-                    android:text="@string/btnPre"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/majorBtnNext"
-                    style="?android:attr/segmentedButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10sp"
-                    android:layout_weight="1"
-                    android:text="@string/btnNext"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</RelativeLayout>

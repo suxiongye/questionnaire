@@ -1,124 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/question_background"
-    android:orientation="vertical" >
+    android:background="@drawable/time2" >
 
     <TextView
         android:id="@+id/subQuestionLabel"
         style="@style/SubQuestionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:text="@string/questionLabel" />
 
-    <ScrollView
-        android:id="@+id/subQustionScrollView"
+    <TextView
+        android:id="@+id/subQuestionContentTextView"
+        style="@style/SubQuestionTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subQuestionLabel"
+        android:text="@string/questionContent" >
+    </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <RadioGroup
+        android:id="@+id/subChooseRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subQuestionContentTextView"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/subChooseRadio1"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="@string/chooseScore1" />
 
-            <TextView
-                android:id="@+id/subQuestionContentTextView"
-                style="@style/SubQuestionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/questionContent" >
-            </TextView>
+        <RadioButton
+            android:id="@+id/subChooseRadio2"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore2" />
 
-            <RadioGroup
-                android:id="@+id/subChooseRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/satisfy" >
+        <RadioButton
+            android:id="@+id/subChooseRadio3"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore3" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio1"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore1" />
+        <RadioButton
+            android:id="@+id/subChooseRadio4"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore4" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio2"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore2" />
+        <RadioButton
+            android:id="@+id/subChooseRadio5"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore5" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio3"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore3" />
+        <RadioButton
+            android:id="@+id/subChooseRadio6"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore6" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio4"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore4" />
+        <RadioButton
+            android:id="@+id/subChooseRadio7"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore7" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio5"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore5" />
+        <RadioButton
+            android:id="@+id/subChooseRadio8"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore8" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio6"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore6" />
+        <RadioButton
+            android:id="@+id/subChooseRadio9"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore9" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio7"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore7" />
+        <RadioButton
+            android:id="@+id/subChooseRadio10"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore10" />
 
-                <RadioButton
-                    android:id="@+id/subChooseRadio8"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore8" />
-
-                <RadioButton
-                    android:id="@+id/subChooseRadio9"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore9" />
-
-                <RadioButton
-                    android:id="@+id/subChooseRadio10"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore10" />
-                <RadioButton
-                    android:id="@+id/subChooseRadio11"
-                    style="@style/SubQuestionRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chooseScore11" />
-            </RadioGroup>
-        </LinearLayout>
-    </ScrollView>
+        <RadioButton
+            android:id="@+id/subChooseRadio11"
+            style="@style/SubQuestionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chooseScore11" />
+    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -128,7 +121,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="10sp"
+            android:layout_marginLeft="20sp"
             android:layout_weight="1"
+            android:background="#80848f"
             android:text="@string/btnPre"
             android:textSize="20sp" />
 
@@ -137,11 +132,12 @@
             style="?android:attr/segmentedButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginRight="20sp"
             android:layout_marginStart="10sp"
             android:layout_weight="1"
+            android:background="#80848f"
             android:text="@string/btnNext"
             android:textSize="20sp" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background" >
+    android:layout_height="match_parent">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -33,40 +32,57 @@
             android:layout_row="1"
             android:orientation="vertical" >
 
-            <RadioButton
-                android:id="@+id/incomeRadio1"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/incomeRadio1" />
+                android:columnCount="3"
+                android:orientation="horizontal" >
 
-            <RadioButton
-                android:id="@+id/incomeRadio2"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/incomeRadio2" />
+                <RadioButton
+                    android:id="@+id/incomeRadio1"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:text="@string/incomeRadio1" />
 
-            <RadioButton
-                android:id="@+id/incomeRadio3"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/incomeRadio3" />
+                <RadioButton
+                    android:id="@+id/incomeRadio2"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:text="@string/incomeRadio2" />
 
-            <RadioButton
-                android:id="@+id/incomeRadio4"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/incomeRadio4" />
+                <RadioButton
+                    android:id="@+id/incomeRadio3"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="0"
+                    android:text="@string/incomeRadio3" />
 
-            <RadioButton
-                android:id="@+id/incomeRadio5"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/incomeRadio5" />
+                <RadioButton
+                    android:id="@+id/incomeRadio4"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:text="@string/incomeRadio4" />
+
+                <RadioButton
+                    android:id="@+id/incomeRadio5"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:text="@string/incomeRadio5" />
+            </GridLayout>
         </RadioGroup>
 
         <TextView
@@ -85,56 +101,77 @@
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_row="3"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
 
-            <RadioButton
-                android:id="@+id/ageRadio1"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ageRadio1" />
+                android:columnCount="4"
+                android:orientation="horizontal" >
 
-            <RadioButton
-                android:id="@+id/ageRadio2"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ageRadio2" />
+                <RadioButton
+                    android:id="@+id/ageRadio1"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:text="@string/ageRadio1" />
 
-            <RadioButton
-                android:id="@+id/ageRadio3"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ageRadio3" />
+                <RadioButton
+                    android:id="@+id/ageRadio2"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:text="@string/ageRadio2" />
 
-            <RadioButton
-                android:id="@+id/ageRadio4"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ageRadio4" />
+                <RadioButton
+                    android:id="@+id/ageRadio3"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="0"
+                    android:text="@string/ageRadio3" />
 
-            <RadioButton
-                android:id="@+id/ageRadio5"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ageRadio5" />
+                <RadioButton
+                    android:id="@+id/ageRadio4"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_row="0"
+                    android:text="@string/ageRadio4" />
 
-            <RadioButton
-                android:id="@+id/ageRadio6"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ageRadio6" />
+                <RadioButton
+                    android:id="@+id/ageRadio5"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:text="@string/ageRadio5" />
 
-            <RadioButton
-                android:id="@+id/ageRadio7"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ageRadio7" />
+                <RadioButton
+                    android:id="@+id/ageRadio6"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:text="@string/ageRadio6" />
+
+                <RadioButton
+                    android:id="@+id/ageRadio7"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="1"
+                    android:text="@string/ageRadio7" />
+            </GridLayout>
         </RadioGroup>
 
         <TextView
@@ -184,56 +221,77 @@
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_row="7"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
 
-            <RadioButton
-                android:id="@+id/purposeRadio1"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/purposeRadio1" />
+                android:columnCount="4"
+                android:orientation="horizontal" >
 
-            <RadioButton
-                android:id="@+id/purposeRadio2"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/purposeRadio2" />
+                <RadioButton
+                    android:id="@+id/purposeRadio1"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:text="@string/purposeRadio1" />
 
-            <RadioButton
-                android:id="@+id/purposeRadio3"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/purposeRadio3" />
+                <RadioButton
+                    android:id="@+id/purposeRadio2"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:text="@string/purposeRadio2" />
 
-            <RadioButton
-                android:id="@+id/purposeRadio4"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/purposeRadio4" />
+                <RadioButton
+                    android:id="@+id/purposeRadio3"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="0"
+                    android:text="@string/purposeRadio3" />
 
-            <RadioButton
-                android:id="@+id/purposeRadio5"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/purposeRadio5" />
+                <RadioButton
+                    android:id="@+id/purposeRadio4"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_row="0"
+                    android:text="@string/purposeRadio4" />
 
-            <RadioButton
-                android:id="@+id/purposeRadio6"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/purposeRadio6" />
+                <RadioButton
+                    android:id="@+id/purposeRadio5"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:text="@string/purposeRadio5" />
 
-            <RadioButton
-                android:id="@+id/purposeRadio7"
-                style="@style/PersonInfoRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/purposeRadio7" />
+                <RadioButton
+                    android:id="@+id/purposeRadio6"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:text="@string/purposeRadio6" />
+
+                <RadioButton
+                    android:id="@+id/purposeRadio7"
+                    style="@style/PersonInfoRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="1"
+                    android:text="@string/purposeRadio7" />
+            </GridLayout>
         </RadioGroup>
 
         <TextView
