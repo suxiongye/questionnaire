@@ -15,7 +15,7 @@
     <TextView
         android:id="@+id/subQuestionContentTextView"
         style="@style/SubQuestionTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/subQuestionLabel"
         android:text="@string/questionContent" >
@@ -23,7 +23,7 @@
 
     <RadioGroup
         android:id="@+id/subChooseRadioGroup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/subQuestionContentTextView"
         android:layout_centerHorizontal="true"
