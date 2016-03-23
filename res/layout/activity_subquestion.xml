@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/time2" >
+    android:background="@drawable/three" >
 
     <TextView
         android:id="@+id/subQuestionLabel"
@@ -123,7 +123,7 @@
             android:layout_marginEnd="10sp"
             android:layout_marginLeft="20sp"
             android:layout_weight="1"
-            android:background="#cf9acaff"
+            android:background="#df9acaff"
             android:text="@string/btnPre"
             android:textSize="20sp" />
 
@@ -135,7 +135,7 @@
             android:layout_marginRight="20sp"
             android:layout_marginStart="10sp"
             android:layout_weight="1"
-            android:background="#cf9acaff"
+            android:background="#df9acaff"
             android:text="@string/btnNext"
             android:textSize="20sp" />
     </LinearLayout>

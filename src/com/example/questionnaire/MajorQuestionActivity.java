@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -23,6 +26,7 @@ import android.widget.TextView;
  */
 public class MajorQuestionActivity extends Activity {
 	// 控件声明
+	private static RelativeLayout majorLayout;
 	private static TextView tv_label;
 	private static TextView tv_content;
 	private static RadioGroup scoreRadioGroup;
@@ -67,6 +71,7 @@ public class MajorQuestionActivity extends Activity {
 		// 获取题目对象
 		questionFile = (QuestionFile) getIntent().getSerializableExtra("questionFile");
 		// 绑定控件
+		majorLayout = (RelativeLayout) findViewById(R.id.majorLayout);
 		tv_label = (TextView) findViewById(R.id.majorQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.majorQuestionContentTextView);
 		scoreRadioGroup = (RadioGroup) findViewById(R.id.majorChooseRadioGroup);
@@ -170,6 +175,7 @@ public class MajorQuestionActivity extends Activity {
 
 				}
 				setTitle("二级指标");
+				setBg(list.get(current).label);
 			}
 		});
 
@@ -181,6 +187,7 @@ public class MajorQuestionActivity extends Activity {
 				prePage();
 				if (current == 0)
 					setTitle("一级指标");
+				setBg(list.get(current).label);
 			}
 		});
 		// 设置选项监听器
@@ -207,8 +214,9 @@ public class MajorQuestionActivity extends Activity {
 			current--;
 			MajorQuestion q = list.get(current);
 			tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
-			if(q.ID == "C")
-			tv_content.setText(q.ID + " . " + q.question);
+
+			if (q.ID == "C")
+				tv_content.setText(q.ID + " . " + q.question);
 			else
 				tv_content.setText(q.question);
 			// 清空上一题选项
@@ -292,5 +300,32 @@ public class MajorQuestionActivity extends Activity {
 				}
 			}
 		}
+	}
+
+	// 设置背景
+	private void setBg(String label) {
+		Resources resources = getApplicationContext().getResources();
+		Drawable dr = resources.getDrawable(R.drawable.first);
+		if (label.equals("整体质量"))
+			majorLayout.setBackground(dr);
+		dr = resources.getDrawable(R.drawable.two1);
+		if (label.equals("时效性指标"))
+			majorLayout.setBackground(dr);
+		dr = resources.getDrawable(R.drawable.two2);
+		if (label.equals("安全性指标"))
+			majorLayout.setBackground(dr);
+		dr = resources.getDrawable(R.drawable.two3);
+		if (label.equals("便捷性指标"))
+			majorLayout.setBackground(dr);
+		dr = resources.getDrawable(R.drawable.two4);
+		if (label.equals("舒适性指标"))
+			majorLayout.setBackground(dr);
+		dr = resources.getDrawable(R.drawable.two5);
+		if (label.equals("可靠性指标"))
+			majorLayout.setBackground(dr);
+		dr = resources.getDrawable(R.drawable.two6);
+		if (label.equals("经济性指标"))
+			majorLayout.setBackground(dr);
+
 	}
 }
