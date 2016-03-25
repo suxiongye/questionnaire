@@ -2,13 +2,21 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
+<<<<<<< HEAD
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+=======
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+>>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
+<<<<<<< HEAD
             backward-compatibility can go here.
+=======
+            backward-compatibility can go here.
+>>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
         -->
     </style>
 
@@ -35,7 +43,11 @@
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
         <item name="android:drawableLeft">@android:drawable/btn_radio</item>
+<<<<<<< HEAD
         <item name="android:layout_marginLeft">10dp</item>
+=======
+        <item name="android:layout_marginLeft">30dp</item>
+>>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
         <item name="android:paddingLeft">10sp</item>
         <item name="android:textSize">20sp</item>
     </style>
