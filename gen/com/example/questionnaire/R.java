@@ -33,18 +33,6 @@ public final class R {
         public static final int info=0x7f020008;
         public static final int logo=0x7f020009;
         public static final int perinfo=0x7f02000a;
-<<<<<<< HEAD
-        public static final int radiobutton=0x7f02000b;
-        public static final int satisfy=0x7f02000c;
-        public static final int textview_border=0x7f02000d;
-        public static final int three=0x7f02000e;
-        public static final int two1=0x7f02000f;
-        public static final int two2=0x7f020010;
-        public static final int two3=0x7f020011;
-        public static final int two4=0x7f020012;
-        public static final int two5=0x7f020013;
-        public static final int two6=0x7f020014;
-=======
         public static final int question_background=0x7f02000b;
         public static final int radiobutton=0x7f02000c;
         public static final int satisfy=0x7f02000d;
@@ -56,7 +44,6 @@ public final class R {
         public static final int two4=0x7f020013;
         public static final int two5=0x7f020014;
         public static final int two6=0x7f020015;
->>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
     }
     public static final class id {
         public static final int action_settings=0x7f080066;
@@ -269,10 +256,7 @@ public final class R {
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
     
 
             Theme customizations available in newer API levels can go in
@@ -283,10 +267,7 @@ public final class R {
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
         
 
         Base application theme for API 11+. This theme completely replaces

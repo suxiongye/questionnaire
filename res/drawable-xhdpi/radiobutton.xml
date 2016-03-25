@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/check" android:state_checked="true" android:state_enabled="true"/>
     <item android:drawable="@drawable/checknull" android:state_checked="false" android:state_enabled="true"/>
 
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:drawable="@drawable/check" android:state_checked="true" android:state_enabled="true"/>
-    <item android:drawable="@drawable/checknull" android:state_checked="false" android:state_enabled="true"/>
-
->>>>>>> a389d0b706fb83e4768397eda3e4c45afc8d1c82
 </selector>
