@@ -1,19 +1,23 @@
 package com.example.questionnaire;
 
-import java.io.Serializable;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -24,12 +28,23 @@ import android.widget.TextView;
  */
 public class MajorQuestionActivity extends Activity {
 	// 控件声明
+	private static RelativeLayout majorLayout;
 	private static TextView tv_label;
 	private static TextView tv_content;
 	private static RadioGroup scoreRadioGroup;
 	private static RadioButton[] scoreRadios;
 	private static Button btn_next;
 	private static Button btn_pre;
+
+	// 声明背景图层
+	private static Resources resources;
+	private static Drawable dr0;
+	private static Drawable dr1;
+	private static Drawable dr2;
+	private static Drawable dr3;
+	private static Drawable dr4;
+	private static Drawable dr5;
+	private static Drawable dr6;
 
 	// 当前页数;
 	private static int current;
@@ -42,7 +57,7 @@ public class MajorQuestionActivity extends Activity {
 	private static QuestionFile questionFile;
 
 	// 分数标准
-	private static int standard = 6;
+	private static int standard = 7;
 
 	// 低于6分的题目
 	private static String worstList;
@@ -54,8 +69,8 @@ public class MajorQuestionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_majorquestion);
-		// 出现答题前提示
-		new AlertDialog.Builder(MajorQuestionActivity.this).setTitle("提示")
+
+		Builder ad = new AlertDialog.Builder(this).setTitle("提示")
 				.setMessage("现在，我们要您问几个问题，来了解您对北京公交的体验。" + "请尽量回忆您的使用体验，时间不限于过去1周。没有正确或错误的答案，"
 						+ "您可以放心作答。您的观点对我们的分析非常重要，感谢您的参与")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -63,14 +78,17 @@ public class MajorQuestionActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 
 					}
-				}).show();
+				});
+		// 出现答题前提示
+		ad.show();
 		// 获取题目对象
 		questionFile = (QuestionFile) getIntent().getSerializableExtra("questionFile");
 		// 绑定控件
+		majorLayout = (RelativeLayout) findViewById(R.id.majorLayout);
 		tv_label = (TextView) findViewById(R.id.majorQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.majorQuestionContentTextView);
 		scoreRadioGroup = (RadioGroup) findViewById(R.id.majorChooseRadioGroup);
-		scoreRadios = new RadioButton[11];
+		scoreRadios = new RadioButton[12];
 		scoreRadios[1] = (RadioButton) findViewById(R.id.majorChooseRadio1);
 		scoreRadios[2] = (RadioButton) findViewById(R.id.majorChooseRadio2);
 		scoreRadios[3] = (RadioButton) findViewById(R.id.majorChooseRadio3);
@@ -81,9 +99,19 @@ public class MajorQuestionActivity extends Activity {
 		scoreRadios[8] = (RadioButton) findViewById(R.id.majorChooseRadio8);
 		scoreRadios[9] = (RadioButton) findViewById(R.id.majorChooseRadio9);
 		scoreRadios[10] = (RadioButton) findViewById(R.id.majorChooseRadio10);
+		scoreRadios[11] = (RadioButton) findViewById(R.id.majorChooseRadio11);
 		btn_next = (Button) findViewById(R.id.majorBtnNext);
 		btn_pre = (Button) findViewById(R.id.majorBtnPre);
 
+		// 设置题目背景
+		resources = getApplicationContext().getResources();
+		dr0 = resources.getDrawable(R.drawable.first);
+		dr1 = resources.getDrawable(R.drawable.two1);
+		dr2 = resources.getDrawable(R.drawable.two2);
+		dr3 = resources.getDrawable(R.drawable.two3);
+		dr4 = resources.getDrawable(R.drawable.two4);
+		dr5 = resources.getDrawable(R.drawable.two5);
+		dr6 = resources.getDrawable(R.drawable.two6);
 		// 读取题目
 		DBService dbService = new DBService();
 		list = dbService.getMajorQuestions();
@@ -93,8 +121,10 @@ public class MajorQuestionActivity extends Activity {
 		current = 0;
 		count = list.size();
 
-		tv_label.setText("您对各项" + list.get(0).label + "指标的满意程度？");
-		tv_content.setText(list.get(0).ID + " . " + list.get(0).question);
+		setTitle("一级指标");
+
+		tv_label.setText(Html.fromHtml("您对各项<b>" + list.get(0).label + "</b>指标的满意程度？"));
+		tv_content.setText(list.get(0).question);
 
 		// 设置上下翻页
 		btn_next.setOnClickListener(new OnClickListener() {
@@ -104,14 +134,23 @@ public class MajorQuestionActivity extends Activity {
 				// 判断是否答题
 				boolean completed = false;
 				int i = 1;
-				for (i = 1; i <= 10; i++) {
+				for (i = 1; i <= 11; i++) {
 					if (scoreRadios[i].isChecked() == true) {
 						completed = true;
 						break;
 					}
 				}
-				if (completed == false)
+				if (completed == false) {
+					// 出现提示
+					new AlertDialog.Builder(MajorQuestionActivity.this).setTitle("提示").setMessage("请至少选中一个选项！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					}).show();
 					return;
+				}
 				// 判断题目是否达到标准
 				if (i < standard && current != 0) {
 					worstList = list.get(current).ID;
@@ -138,13 +177,27 @@ public class MajorQuestionActivity extends Activity {
 							break;
 						}
 					}
-					// 若题目全部做完则进入个人信息
+					// 若题目全部做完则保存题目
 					if (allCheck == true) {
 						// 存储父题目
 						questionFile.saveMajorQuestion(list);
+						// 若不用进入细化调查则直接进入下一环节
+						if (list.get(list.size() - 1).selectedAnswer >= standard) {
+							// 存储子题目
+							questionFile.saveSubQuestion(list_sub);
+							Intent intent = null;
+							intent = new Intent(MajorQuestionActivity.this, PersonInformationActivity.class);
+							Bundle bundle = new Bundle();
+							bundle.putSerializable("questionFile", questionFile);
+							intent.putExtras(bundle);
+							startActivity(intent);
+							MajorQuestionActivity.this.finish();
+						}
 					}
-				}
 
+				}
+				setTitle("二级指标");
+				setBg(list.get(current).label);
 			}
 		});
 
@@ -154,6 +207,9 @@ public class MajorQuestionActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				prePage();
+				if (current == 0)
+					setTitle("一级指标");
+				setBg(list.get(current).label);
 			}
 		});
 		// 设置选项监听器
@@ -162,7 +218,7 @@ public class MajorQuestionActivity extends Activity {
 			public void onCheckedChanged(RadioGroup arg0, int arg1) {
 				// TODO Auto-generated method stub
 				// 判断哪个选项被选中
-				for (int i = 1; i <= 10; i++) {
+				for (int i = 1; i <= 11; i++) {
 					if (scoreRadios[i].isChecked() == true) {
 						list.get(current).selectedAnswer = i;
 						break;
@@ -174,12 +230,17 @@ public class MajorQuestionActivity extends Activity {
 
 	// 跳转道上一页函数
 	private static void prePage() {
+
 		// 如果不是第一页
 		if (current > 0) {
 			current--;
 			MajorQuestion q = list.get(current);
-			tv_label.setText("您对各项" + q.label + "的满意程度？");
-			tv_content.setText(q.ID + " . " + q.question);
+			tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
+
+			if (q.ID == "C")
+				tv_content.setText(q.ID + " . " + q.question);
+			else
+				tv_content.setText(q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
 			// 若题目被选中则显示原来选择
@@ -194,7 +255,7 @@ public class MajorQuestionActivity extends Activity {
 		// 如果不是最后一页
 		current++;
 		MajorQuestion q = list.get(current);
-		tv_label.setText("您对各项" + q.label + "的满意程度？");
+		tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
 		tv_content.setText(q.ID + " . " + q.question);
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
@@ -209,7 +270,7 @@ public class MajorQuestionActivity extends Activity {
 		if (n > -1 && n < count) {
 			current = n;
 			MajorQuestion q = list.get(current);
-			tv_label.setText("您对各项" + q.label + "的满意程度？");
+			tv_label.setText(Html.fromHtml("您对各项<b>" + q.label + "</b>的满意程度？"));
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
@@ -230,13 +291,12 @@ public class MajorQuestionActivity extends Activity {
 			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
 			fixSubQuestion(request);
 		}
-		//若是答题结束则进入个人信息
+		// 若是答题结束则进入个人信息
 		if (resultCode == 3) {
 			// 存入数据库
-			
 			List<SubQuestion> request = (List<SubQuestion>) (data.getSerializableExtra("subquestion"));
 			fixSubQuestion(request);
-			
+
 			// 存储子题目
 			questionFile.saveSubQuestion(list_sub);
 			Intent intent = null;
@@ -262,5 +322,24 @@ public class MajorQuestionActivity extends Activity {
 				}
 			}
 		}
+	}
+
+	// 设置背景
+	private void setBg(String label) {
+		if (label.equals("整体质量"))
+			majorLayout.setBackground(dr0);
+		if (label.equals("时效性指标"))
+			majorLayout.setBackground(dr1);
+		if (label.equals("安全性指标"))
+			majorLayout.setBackground(dr2);
+		if (label.equals("便捷性指标"))
+			majorLayout.setBackground(dr3);
+		if (label.equals("舒适性指标"))
+			majorLayout.setBackground(dr4);
+		if (label.equals("可靠性指标"))
+			majorLayout.setBackground(dr5);
+		if (label.equals("经济性指标"))
+			majorLayout.setBackground(dr6);
+
 	}
 }

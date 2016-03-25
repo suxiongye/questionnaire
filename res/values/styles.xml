@@ -2,13 +2,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -20,44 +20,68 @@
     <style name="LabelTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
     <style name="InputTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
     <style name="InformationRadio">
-        <item name="android:layout_marginTop">3sp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableLeft">@android:drawable/btn_radio</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:paddingLeft">10sp</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="MajorQuestionRadio">
-        <item name="android:layout_marginTop">15sp</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:paddingTop">30sp</item>
+        <item name="android:paddingLeft">40sp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableBottom">@android:drawable/btn_radio</item>
     </style>
 
     <style name="SubQuestionRadio">
-        <item name="android:layout_marginTop">15sp</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:paddingTop">30sp</item>
+        <item name="android:paddingLeft">40sp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableBottom">@android:drawable/btn_radio</item>
     </style>
 
     <style name="MajorQuestionTextView">
-        <item name="android:textSize">25sp</item>
+        <item name="android:paddingLeft">60sp</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
     <style name="SubQuestionTextView">
-        <item name="android:textSize">25sp</item>
+        <item name="android:paddingLeft">60sp</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
     <style name="PersonInfoRadio">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableLeft">@android:drawable/btn_radio</item>
+        <item name="android:paddingLeft">30sp</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="PersonInfoTextView">
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="@android:style/DeviceDefault.ButtonBar.AlertDialog">
+        <item name="android:textSize">80sp</item>
     </style>
 
 </resources>

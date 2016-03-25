@@ -2,6 +2,7 @@ package com.example.questionnaire;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,14 +69,15 @@ public class PersonInformationActivity extends Activity {
 				"questionFile");
 
 		// 出现答题前提示
-		new AlertDialog.Builder(PersonInformationActivity.this).setTitle("提示")
+		Builder ad = new AlertDialog.Builder(PersonInformationActivity.this).setTitle("提示")
 				.setMessage("为了更好地分析调查结果，下面将采集一些简单的个人信息！")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
 					}
-				}).show();
+				});
+		ad.show();
 
 		// 设置提交之后返回主页面
 		submitBtn.setOnClickListener(new OnClickListener() {
@@ -104,6 +106,16 @@ public class PersonInformationActivity extends Activity {
 										}
 									}).show();
 
+				}
+				else{
+					// 出现提示
+					new AlertDialog.Builder(PersonInformationActivity.this).setTitle("提示").setMessage("信息未填全！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					}).show();
 				}
 			}
 		});

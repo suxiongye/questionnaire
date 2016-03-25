@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,7 +46,7 @@ public class SubQuestionActivity extends Activity {
 		tv_label = (TextView) findViewById(R.id.subQuestionLabel);
 		tv_content = (TextView) findViewById(R.id.subQuestionContentTextView);
 		scoreRadioGroup = (RadioGroup) findViewById(R.id.subChooseRadioGroup);
-		scoreRadios = new RadioButton[11];
+		scoreRadios = new RadioButton[12];
 		scoreRadios[1] = (RadioButton) findViewById(R.id.subChooseRadio1);
 		scoreRadios[2] = (RadioButton) findViewById(R.id.subChooseRadio2);
 		scoreRadios[3] = (RadioButton) findViewById(R.id.subChooseRadio3);
@@ -55,6 +57,7 @@ public class SubQuestionActivity extends Activity {
 		scoreRadios[8] = (RadioButton) findViewById(R.id.subChooseRadio8);
 		scoreRadios[9] = (RadioButton) findViewById(R.id.subChooseRadio9);
 		scoreRadios[10] = (RadioButton) findViewById(R.id.subChooseRadio10);
+		scoreRadios[11] = (RadioButton) findViewById(R.id.subChooseRadio11);
 		btn_next = (Button) findViewById(R.id.subBtnNext);
 		btn_pre = (Button) findViewById(R.id.subBtnPre);
 
@@ -67,7 +70,8 @@ public class SubQuestionActivity extends Activity {
 		current = 0;
 		count = list.size();
 
-		tv_label.setText(list.get(0).label);
+		tv_label.setText(list.get(0).label+"  ——  "+list.get(0).belongContent);
+		tv_label.getPaint().setFakeBoldText(true);
 		tv_content.setText(list.get(0).ID + ". " + list.get(0).question);
 
 		// 设置上下翻页
@@ -77,13 +81,22 @@ public class SubQuestionActivity extends Activity {
 				// TODO Auto-generated method stub
 				// 判断是否答题
 				boolean completed = false;
-				for (int i = 1; i <= 10; i++) {
+				for (int i = 1; i <= 11; i++) {
 					if (scoreRadios[i].isChecked() == true) {
 						completed = true;
 					}
 				}
-				if (completed == false)
+				if (completed == false) {
+					// 出现提示
+					new AlertDialog.Builder(SubQuestionActivity.this).setTitle("提示").setMessage("请至少选中一个选项！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					}).show();
 					return;
+				}
 				// 所有题目是否做完标志
 				if (current < count - 1) {
 					nextPage();
@@ -107,7 +120,7 @@ public class SubQuestionActivity extends Activity {
 						intent.putExtras(bundle);
 						setResult(2, intent);
 						// 判断是否是最后一题的子题目
-						if (list.get(0).belong.equals(dbService.getLastMajorQuestionID())==true) {
+						if (list.get(0).belong.equals(dbService.getLastMajorQuestionID()) == true) {
 							setResult(3, intent);
 						}
 						SubQuestionActivity.this.finish();
@@ -130,7 +143,7 @@ public class SubQuestionActivity extends Activity {
 			public void onCheckedChanged(RadioGroup arg0, int arg1) {
 				// TODO Auto-generated method stub
 				// 判断哪个选项被选中
-				for (int i = 1; i <= 10; i++) {
+				for (int i = 1; i <= 11; i++) {
 					if (scoreRadios[i].isChecked() == true) {
 						list.get(current).selectedAnswer = i;
 						break;
@@ -146,7 +159,7 @@ public class SubQuestionActivity extends Activity {
 		if (current > 0) {
 			current--;
 			SubQuestion q = list.get(current);
-			tv_label.setText(q.label);
+			tv_label.setText(q.label+"  ——  "+q.belongContent);
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();
@@ -161,7 +174,7 @@ public class SubQuestionActivity extends Activity {
 	private static void nextPage() {
 		current++;
 		SubQuestion q = list.get(current);
-		tv_label.setText(q.label);
+		tv_label.setText(q.label+"  ——  "+q.belongContent);
 		tv_content.setText(q.ID + " . " + q.question);
 		// 清空上一题选项
 		scoreRadioGroup.clearCheck();
@@ -176,7 +189,7 @@ public class SubQuestionActivity extends Activity {
 		if (n > -1 && n < count) {
 			current = n;
 			SubQuestion q = list.get(current);
-			tv_label.setText(q.label);
+			tv_label.setText(q.label+"  ——  "+q.belongContent);
 			tv_content.setText(q.ID + " . " + q.question);
 			// 清空上一题选项
 			scoreRadioGroup.clearCheck();

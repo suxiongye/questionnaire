@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -22,23 +24,20 @@ public class MainActivity extends Activity {
 		// 开始按钮
 		Button startBtn = (Button) findViewById(R.id.startButton);
 		// 判断是否插入SD卡
-		if (Environment.getExternalStorageState().equals(
-				Environment.MEDIA_MOUNTED) == false) {
+		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) == false) {
 			startBtn.setText("请插入SD卡");
 		}
 		startBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//进入调查
-				Intent intent = new Intent(MainActivity.this,
-						InformationActivity.class);
+				// 进入调查
+				Intent intent = new Intent(MainActivity.this, InformationActivity.class);
 				startActivity(intent);
 				MainActivity.this.finish();
 			}
 		});
 		// 退出按钮
 		Button exitBtn = (Button) findViewById(R.id.exitButton);
-
 		exitBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -49,8 +48,7 @@ public class MainActivity extends Activity {
 		});
 
 		// 存储题库数据库地址和名称
-		String DB_PATH = Environment.getDataDirectory()
-				+ "/data/com.example.questionnaire/databases/";
+		String DB_PATH = Environment.getDataDirectory() + "/data/com.example.questionnaire/databases/";
 		String DB_NAME = "questionnaire.db";
 
 		if ((new File(DB_PATH + DB_NAME).exists()) == false) {

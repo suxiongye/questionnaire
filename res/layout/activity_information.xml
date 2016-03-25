@@ -1,7 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/infoScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/info" >
 
     <GridLayout
         android:id="@+id/infoGridLayout"
@@ -43,7 +44,8 @@
             android:layout_column="1"
             android:layout_row="1"
             android:hint="@string/dateInputHint"
-            android:inputType="date" >
+            android:inputType="date"
+            android:textColor="#000000" >
         </EditText>
 
         <TextView
@@ -60,7 +62,8 @@
             android:layout_row="2"
             android:hint="@string/timeInputHint"
             android:inputType="time"
-            android:maxLength="6" >
+            android:maxLength="6"
+            android:textColor="#000000" >
         </EditText>
 
         <TextView
@@ -118,14 +121,41 @@
             android:layout_row="6"
             android:text="@string/stationTypeInput" />
 
-        <EditText
-            android:id="@+id/stationTypeEditText"
+        <RadioGroup
+            android:id="@+id/busStaTypesRadioGroup"
             style="@style/InputTextView"
             android:layout_column="1"
             android:layout_row="6"
-            android:hint="@string/stationTypeInputHint"
-            android:inputType="text" >
-        </EditText>
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/busStaType1Radio"
+                style="@style/InformationRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stationType1" />
+
+            <RadioButton
+                android:id="@+id/busStaType2Radio"
+                style="@style/InformationRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stationType2" />
+
+            <RadioButton
+                android:id="@+id/busStaType3Radio"
+                style="@style/InformationRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stationType3" />
+
+            <RadioButton
+                android:id="@+id/busStaType4Radio"
+                style="@style/InformationRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stationType4" />
+        </RadioGroup>
 
         <TextView
             android:id="@+id/busTypeTextView"
@@ -139,34 +169,34 @@
             style="@style/InputTextView"
             android:layout_column="1"
             android:layout_row="7"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
 
             <RadioButton
                 android:id="@+id/busType1Radio"
+                style="@style/InformationRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/InformationRadio"
                 android:text="@string/busType1" />
 
             <RadioButton
                 android:id="@+id/busType2Radio"
+                style="@style/InformationRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/InformationRadio"
                 android:text="@string/busType2" />
 
             <RadioButton
                 android:id="@+id/busType3Radio"
+                style="@style/InformationRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/InformationRadio"
                 android:text="@string/busType3" />
 
             <RadioButton
                 android:id="@+id/busType4Radio"
+                style="@style/InformationRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/InformationRadio"
                 android:text="@string/busType4" />
         </RadioGroup>
 
@@ -182,32 +212,34 @@
             style="@style/InputTextView"
             android:layout_column="1"
             android:layout_row="8"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
 
             <RadioButton
                 android:id="@+id/sexManRadio"
+                style="@style/InformationRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/InformationRadio"
                 android:text="@string/sexMan" />
 
             <RadioButton
                 android:id="@+id/sexWomanRadio"
+                style="@style/InformationRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/InformationRadio"
+                android:layout_marginLeft="80sp"
                 android:text="@string/sexWoman" />
         </RadioGroup>
 
         <Button
             android:id="@+id/informationBtn"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="158dp"
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
+            android:layout_gravity="center_horizontal|top"
             android:layout_row="9"
-            android:textSize="20sp"
-            android:text="@string/infoBtn" />
+            android:background="#cf9acaff"
+            android:text="@string/infoBtn"
+            android:textSize="20sp" />
     </GridLayout>
 
 </ScrollView>

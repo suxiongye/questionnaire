@@ -41,7 +41,6 @@ public class DBService {
 				majorQuestion.question = cursor.getString(cursor.getColumnIndex("question"));
 				majorQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
 				majorQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
-
 				list_major.add(majorQuestion);
 			}
 		}
@@ -64,6 +63,7 @@ public class DBService {
 				subQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
 				subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
 				subQuestion.belong = cursor.getString(cursor.getColumnIndex("belong"));
+				subQuestion.belongContent = cursor.getString(cursor.getColumnIndex("belongcontent"));
 				list.add(subQuestion);
 			}
 		}
@@ -88,6 +88,7 @@ public class DBService {
 					subQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
 					subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
 					subQuestion.belong = cursor.getString(cursor.getColumnIndex("belong"));
+					subQuestion.belongContent = cursor.getString(cursor.getColumnIndex("belongcontent"));
 					list.add(subQuestion);
 				}
 			}
@@ -112,6 +113,7 @@ public class DBService {
 				subQuestion.label = cursor.getString(cursor.getColumnIndex("label"));
 				subQuestion.ID = cursor.getString(cursor.getColumnIndex("id"));
 				subQuestion.belong = cursor.getString(cursor.getColumnIndex("belong"));
+				subQuestion.belongContent = cursor.getString(cursor.getColumnIndex("belongcontent"));
 				list.add(subQuestion);
 			}
 		}
